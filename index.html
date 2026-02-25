@@ -1826,152 +1826,153 @@
     <!-- Full Screen Survey Modal -->
     <div class="survey-modal" id="survey-modal">
         <div class="survey-modal-content">
-            <button class="survey-close" id="survey-close">
-                <i class="hgi-stroke hgi-cancel-01"></i>
-            </button>
-
-            <!-- Instagram-style Progress Stepper -->
-            <div class="story-progress">
-                <div class="story-bar" data-step="1"><div class="story-fill"></div></div>
-                <div class="story-bar" data-step="2"><div class="story-fill"></div></div>
-                <div class="story-bar" data-step="3"><div class="story-fill"></div></div>
-                <div class="story-bar" data-step="4"><div class="story-fill"></div></div>
-                <div class="story-bar" data-step="5"><div class="story-fill"></div></div>
-                <div class="story-bar" data-step="6"><div class="story-fill"></div></div>
-                <div class="story-bar" data-step="7"><div class="story-fill"></div></div>
-                <div class="story-bar" data-step="8"><div class="story-fill"></div></div>
-                <div class="story-bar" data-step="9"><div class="story-fill"></div></div>
-                <div class="story-bar" data-step="10"><div class="story-fill"></div></div>
+            <!-- Header with close and progress -->
+            <div class="survey-header-bar">
+                <button class="survey-close" id="survey-close">
+                    <i class="hgi-stroke hgi-cancel-01"></i>
+                </button>
+                <div class="progress-line">
+                    <div class="progress-line-fill" id="progress-line-fill"></div>
+                </div>
             </div>
 
             <div class="survey-slides-wrapper">
-                <!-- Question 1 -->
-                <div class="survey-slide active" data-q="1">
-                    <div class="survey-icon"><i class="hgi-stroke hgi-sun-03"></i></div>
+                <!-- Welcome/Intro Slide -->
+                <div class="survey-slide active" data-q="intro">
+                    <div class="survey-icon intro-icon"><i class="hgi-stroke hgi-lotus"></i></div>
+                    <h3 class="survey-question">Let's Understand Your Body</h3>
+                    <p class="survey-subtitle">This 2-minute assessment will help Dr. Richa understand your unique health profile and create a personalized path to wellness.</p>
+                    <p class="survey-encourage">No judgment. Just honest answers that lead to real transformation.</p>
+                    <button class="survey-start-btn" id="survey-start">Begin Assessment <i class="hgi-stroke hgi-arrow-right-01"></i></button>
+                </div>
+
+                <!-- Question 1: Primary Concern -->
+                <div class="survey-slide" data-q="1">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-stethoscope-02"></i></div>
                     <p class="survey-q-num">1 of 10</p>
-                    <h3 class="survey-question">How would you describe your energy levels?</h3>
+                    <h3 class="survey-question">What's your primary health concern right now?</h3>
                     <div class="survey-options">
-                        <button class="survey-opt" data-val="high"><i class="hgi-stroke hgi-flash"></i> Consistently High</button>
-                        <button class="survey-opt" data-val="moderate"><i class="hgi-stroke hgi-activity-01"></i> Moderate with Dips</button>
-                        <button class="survey-opt" data-val="low"><i class="hgi-stroke hgi-battery-low"></i> Generally Low</button>
-                        <button class="survey-opt" data-val="exhausted"><i class="hgi-stroke hgi-sleeping"></i> Chronically Exhausted</button>
+                        <button class="survey-opt" data-val="hormonal"><i class="hgi-stroke hgi-dna"></i> Hormonal Issues (PCOD, Thyroid, Menopause)</button>
+                        <button class="survey-opt" data-val="metabolic"><i class="hgi-stroke hgi-heartbeat"></i> Metabolic Issues (Diabetes, Weight, Cholesterol)</button>
+                        <button class="survey-opt" data-val="digestive"><i class="hgi-stroke hgi-apple-01"></i> Digestive Problems (IBS, Reflux, Gut Issues)</button>
+                        <button class="survey-opt" data-val="fatigue"><i class="hgi-stroke hgi-battery-low"></i> Chronic Fatigue & Low Energy</button>
                     </div>
                 </div>
 
-                <!-- Question 2 -->
+                <!-- Question 2: Morning Routine -->
                 <div class="survey-slide" data-q="2">
-                    <div class="survey-icon"><i class="hgi-stroke hgi-moon-02"></i></div>
+                    <div class="survey-icon"><i class="hgi-stroke hgi-sun-03"></i></div>
                     <p class="survey-q-num">2 of 10</p>
-                    <h3 class="survey-question">How would you rate your sleep quality?</h3>
+                    <h3 class="survey-question">What time do you wake up and how do you feel?</h3>
                     <div class="survey-options">
-                        <button class="survey-opt" data-val="excellent"><i class="hgi-stroke hgi-star"></i> Excellent</button>
-                        <button class="survey-opt" data-val="good"><i class="hgi-stroke hgi-thumbs-up"></i> Good</button>
-                        <button class="survey-opt" data-val="poor"><i class="hgi-stroke hgi-sad-01"></i> Poor</button>
-                        <button class="survey-opt" data-val="insomnia"><i class="hgi-stroke hgi-alert-02"></i> Chronic Issues</button>
+                        <button class="survey-opt" data-val="early-energized"><i class="hgi-stroke hgi-sunrise"></i> Before 6am, feeling refreshed</button>
+                        <button class="survey-opt" data-val="normal-okay"><i class="hgi-stroke hgi-alarm-clock"></i> 6-8am, takes time to feel awake</button>
+                        <button class="survey-opt" data-val="late-groggy"><i class="hgi-stroke hgi-sleeping"></i> After 8am, still feel groggy</button>
+                        <button class="survey-opt" data-val="irregular"><i class="hgi-stroke hgi-shuffle"></i> Irregular schedule, often exhausted</button>
                     </div>
                 </div>
 
-                <!-- Question 3 -->
+                <!-- Question 3: Gut Symptoms -->
                 <div class="survey-slide" data-q="3">
-                    <div class="survey-icon"><i class="hgi-stroke hgi-apple-01"></i></div>
-                    <p class="survey-q-num">3 of 10</p>
-                    <h3 class="survey-question">How is your digestive health?</h3>
-                    <div class="survey-options">
-                        <button class="survey-opt" data-val="perfect"><i class="hgi-stroke hgi-tick-01"></i> Perfect</button>
-                        <button class="survey-opt" data-val="occasional"><i class="hgi-stroke hgi-notification-03"></i> Occasional Issues</button>
-                        <button class="survey-opt" data-val="frequent"><i class="hgi-stroke hgi-alert-circle"></i> Frequent Problems</button>
-                        <button class="survey-opt" data-val="chronic"><i class="hgi-stroke hgi-cancel-circle"></i> Chronic Condition</button>
-                    </div>
-                </div>
-
-                <!-- Question 4 -->
-                <div class="survey-slide" data-q="4">
-                    <div class="survey-icon"><i class="hgi-stroke hgi-meditation"></i></div>
-                    <p class="survey-q-num">4 of 10</p>
-                    <h3 class="survey-question">How do you experience stress?</h3>
-                    <div class="survey-options">
-                        <button class="survey-opt" data-val="managed"><i class="hgi-stroke hgi-yoga-01"></i> Well Managed</button>
-                        <button class="survey-opt" data-val="moderate"><i class="hgi-stroke hgi-time-quarter-pass"></i> Moderate Stress</button>
-                        <button class="survey-opt" data-val="high"><i class="hgi-stroke hgi-fire"></i> High Stress</button>
-                        <button class="survey-opt" data-val="burnout"><i class="hgi-stroke hgi-danger"></i> Burnout</button>
-                    </div>
-                </div>
-
-                <!-- Question 5 -->
-                <div class="survey-slide" data-q="5">
                     <div class="survey-icon"><i class="hgi-stroke hgi-organic-food"></i></div>
+                    <p class="survey-q-num">3 of 10</p>
+                    <h3 class="survey-question">Do you experience any of these gut symptoms regularly?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="bloating"><i class="hgi-stroke hgi-circle"></i> Bloating after meals</button>
+                        <button class="survey-opt" data-val="irregular"><i class="hgi-stroke hgi-alert-02"></i> Irregular bowel movements</button>
+                        <button class="survey-opt" data-val="acidity"><i class="hgi-stroke hgi-fire"></i> Acidity or acid reflux</button>
+                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-01"></i> None of the above</button>
+                    </div>
+                </div>
+
+                <!-- Question 4: Relationship with Food -->
+                <div class="survey-slide" data-q="4">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-dish-01"></i></div>
+                    <p class="survey-q-num">4 of 10</p>
+                    <h3 class="survey-question">How would you describe your relationship with food?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="mindful"><i class="hgi-stroke hgi-meditation"></i> Mindful, home-cooked meals mostly</button>
+                        <button class="survey-opt" data-val="busy"><i class="hgi-stroke hgi-time-02"></i> Eat on-the-go, whatever is convenient</button>
+                        <button class="survey-opt" data-val="emotional"><i class="hgi-stroke hgi-sad-01"></i> Emotional eating, cravings control me</button>
+                        <button class="survey-opt" data-val="restrictive"><i class="hgi-stroke hgi-cancel-01"></i> Restrictive diets, always trying new ones</button>
+                    </div>
+                </div>
+
+                <!-- Question 5: Hormonal Symptoms -->
+                <div class="survey-slide" data-q="5">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-thermometer"></i></div>
                     <p class="survey-q-num">5 of 10</p>
-                    <h3 class="survey-question">How would you describe your diet?</h3>
+                    <h3 class="survey-question">Which hormonal symptoms affect you most?</h3>
                     <div class="survey-options">
-                        <button class="survey-opt" data-val="whole"><i class="hgi-stroke hgi-leaf-01"></i> Whole Foods</button>
-                        <button class="survey-opt" data-val="mixed"><i class="hgi-stroke hgi-dish-01"></i> Mixed</button>
-                        <button class="survey-opt" data-val="processed"><i class="hgi-stroke hgi-pizza-01"></i> Mostly Processed</button>
-                        <button class="survey-opt" data-val="inconsistent"><i class="hgi-stroke hgi-help"></i> Inconsistent</button>
+                        <button class="survey-opt" data-val="cycle"><i class="hgi-stroke hgi-calendar-02"></i> Irregular periods or painful cycles</button>
+                        <button class="survey-opt" data-val="skin-hair"><i class="hgi-stroke hgi-user-star-01"></i> Skin issues, hair fall, or acne</button>
+                        <button class="survey-opt" data-val="mood"><i class="hgi-stroke hgi-mood-minus"></i> Mood swings, anxiety, or brain fog</button>
+                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-double-01"></i> None currently</button>
                     </div>
                 </div>
 
-                <!-- Question 6 -->
+                <!-- Question 6: Sleep & Circadian -->
                 <div class="survey-slide" data-q="6">
-                    <div class="survey-icon"><i class="hgi-stroke hgi-dumbbell-02"></i></div>
+                    <div class="survey-icon"><i class="hgi-stroke hgi-moon-02"></i></div>
                     <p class="survey-q-num">6 of 10</p>
-                    <h3 class="survey-question">How often do you exercise?</h3>
+                    <h3 class="survey-question">How is your sleep and circadian rhythm?</h3>
                     <div class="survey-options">
-                        <button class="survey-opt" data-val="daily"><i class="hgi-stroke hgi-running-shoes"></i> Daily</button>
-                        <button class="survey-opt" data-val="regular"><i class="hgi-stroke hgi-calendar-03"></i> 3-4 Times/Week</button>
-                        <button class="survey-opt" data-val="occasional"><i class="hgi-stroke hgi-timer-01"></i> Occasional</button>
-                        <button class="survey-opt" data-val="sedentary"><i class="hgi-stroke hgi-armchair"></i> Sedentary</button>
+                        <button class="survey-opt" data-val="solid"><i class="hgi-stroke hgi-star"></i> Sleep by 10pm, 7-8 hours uninterrupted</button>
+                        <button class="survey-opt" data-val="late"><i class="hgi-stroke hgi-smartphone-02"></i> Sleep late, scroll before bed</button>
+                        <button class="survey-opt" data-val="disturbed"><i class="hgi-stroke hgi-alert-circle"></i> Wake up multiple times at night</button>
+                        <button class="survey-opt" data-val="insomnia"><i class="hgi-stroke hgi-sad-02"></i> Difficulty falling or staying asleep</button>
                     </div>
                 </div>
 
-                <!-- Question 7 -->
+                <!-- Question 7: Medication Duration -->
                 <div class="survey-slide" data-q="7">
-                    <div class="survey-icon"><i class="hgi-stroke hgi-dna"></i></div>
-                    <p class="survey-q-num">7 of 10</p>
-                    <h3 class="survey-question">Any hormonal symptoms?</h3>
-                    <div class="survey-options">
-                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-double-01"></i> None</button>
-                        <button class="survey-opt" data-val="mild"><i class="hgi-stroke hgi-thermometer"></i> Mild</button>
-                        <button class="survey-opt" data-val="moderate"><i class="hgi-stroke hgi-heartbeat"></i> Moderate</button>
-                        <button class="survey-opt" data-val="diagnosed"><i class="hgi-stroke hgi-stethoscope-02"></i> Diagnosed Condition</button>
-                    </div>
-                </div>
-
-                <!-- Question 8 -->
-                <div class="survey-slide" data-q="8">
                     <div class="survey-icon"><i class="hgi-stroke hgi-medicine-01"></i></div>
-                    <p class="survey-q-num">8 of 10</p>
-                    <h3 class="survey-question">Are you on any medications?</h3>
+                    <p class="survey-q-num">7 of 10</p>
+                    <h3 class="survey-question">How long have you been on medications?</h3>
                     <div class="survey-options">
-                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-01"></i> None</button>
-                        <button class="survey-opt" data-val="occasional"><i class="hgi-stroke hgi-first-aid-kit"></i> Occasional</button>
-                        <button class="survey-opt" data-val="regular"><i class="hgi-stroke hgi-capsule"></i> Regular</button>
-                        <button class="survey-opt" data-val="multiple"><i class="hgi-stroke hgi-medicine-bottle-02"></i> Multiple</button>
+                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-01"></i> Not on any medications</button>
+                        <button class="survey-opt" data-val="short"><i class="hgi-stroke hgi-calendar-01"></i> Less than 1 year</button>
+                        <button class="survey-opt" data-val="medium"><i class="hgi-stroke hgi-calendar-03"></i> 1-5 years</button>
+                        <button class="survey-opt" data-val="long"><i class="hgi-stroke hgi-infinity"></i> 5+ years, increasing doses</button>
                     </div>
                 </div>
 
-                <!-- Question 9 -->
+                <!-- Question 8: Previous Attempts -->
+                <div class="survey-slide" data-q="8">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-search-02"></i></div>
+                    <p class="survey-q-num">8 of 10</p>
+                    <h3 class="survey-question">What have you tried before that didn't work?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="diets"><i class="hgi-stroke hgi-scale"></i> Crash diets & calorie counting</button>
+                        <button class="survey-opt" data-val="supplements"><i class="hgi-stroke hgi-capsule"></i> Random supplements & detoxes</button>
+                        <button class="survey-opt" data-val="allopathy"><i class="hgi-stroke hgi-hospital-01"></i> Only conventional medicine</button>
+                        <button class="survey-opt" data-val="nothing"><i class="hgi-stroke hgi-help"></i> Haven't really tried anything yet</button>
+                    </div>
+                </div>
+
+                <!-- Question 9: Dream Outcome -->
                 <div class="survey-slide" data-q="9">
                     <div class="survey-icon"><i class="hgi-stroke hgi-target-02"></i></div>
                     <p class="survey-q-num">9 of 10</p>
-                    <h3 class="survey-question">What's your primary health goal?</h3>
+                    <h3 class="survey-question">What would transformation look like for you?</h3>
                     <div class="survey-options">
-                        <button class="survey-opt" data-val="energy"><i class="hgi-stroke hgi-flash"></i> More Energy</button>
-                        <button class="survey-opt" data-val="weight"><i class="hgi-stroke hgi-body-weight"></i> Weight Management</button>
-                        <button class="survey-opt" data-val="reverse"><i class="hgi-stroke hgi-heal"></i> Reverse a Condition</button>
-                        <button class="survey-opt" data-val="prevent"><i class="hgi-stroke hgi-shield-01"></i> Prevention</button>
+                        <button class="survey-opt" data-val="medication-free"><i class="hgi-stroke hgi-lotus"></i> Living medication-free</button>
+                        <button class="survey-opt" data-val="energy"><i class="hgi-stroke hgi-flash"></i> Boundless energy throughout the day</button>
+                        <button class="survey-opt" data-val="reverse"><i class="hgi-stroke hgi-refresh"></i> Reversing a diagnosed condition</button>
+                        <button class="survey-opt" data-val="understand"><i class="hgi-stroke hgi-book-open-01"></i> Understanding my body deeply</button>
                     </div>
                 </div>
 
-                <!-- Question 10 -->
+                <!-- Question 10: Commitment Level -->
                 <div class="survey-slide" data-q="10">
-                    <div class="survey-icon"><i class="hgi-stroke hgi-lotus"></i></div>
+                    <div class="survey-icon"><i class="hgi-stroke hgi-rocket-01"></i></div>
                     <p class="survey-q-num">10 of 10</p>
-                    <h3 class="survey-question">Ready to commit to change?</h3>
+                    <h3 class="survey-question">How ready are you to make real changes?</h3>
                     <div class="survey-options">
-                        <button class="survey-opt" data-val="fully"><i class="hgi-stroke hgi-rocket-01"></i> Fully Committed</button>
-                        <button class="survey-opt" data-val="mostly"><i class="hgi-stroke hgi-thumb-up"></i> Mostly Ready</button>
-                        <button class="survey-opt" data-val="gradual"><i class="hgi-stroke hgi-stairs-up"></i> Gradual Steps</button>
-                        <button class="survey-opt" data-val="exploring"><i class="hgi-stroke hgi-compass"></i> Still Exploring</button>
+                        <button class="survey-opt" data-val="all-in"><i class="hgi-stroke hgi-fire"></i> All in. Ready to transform</button>
+                        <button class="survey-opt" data-val="guided"><i class="hgi-stroke hgi-route"></i> Need guidance but willing to commit</button>
+                        <button class="survey-opt" data-val="slow"><i class="hgi-stroke hgi-stairs-up"></i> Prefer gradual, sustainable changes</button>
+                        <button class="survey-opt" data-val="curious"><i class="hgi-stroke hgi-eye"></i> Just exploring options for now</button>
                     </div>
                 </div>
 
@@ -2068,12 +2069,18 @@
             }
         }
 
+        /* Survey Header Bar */
+        .survey-header-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: var(--cream);
+        }
+
         .survey-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background: rgba(0,0,0,0.05);
             border: none;
             border-radius: 50%;
@@ -2081,8 +2088,8 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
 
         .survey-close:hover {
@@ -2090,45 +2097,70 @@
         }
 
         .survey-close i {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--text);
         }
 
-        /* Instagram-style Progress */
-        .story-progress {
-            display: flex;
-            gap: 4px;
-            padding: 16px 20px;
-            background: var(--cream);
-        }
-
-        .story-bar {
+        /* Single Line Progress */
+        .progress-line {
             flex: 1;
-            height: 3px;
+            height: 4px;
             background: var(--blush);
-            border-radius: 3px;
+            border-radius: 4px;
             overflow: hidden;
         }
 
-        .story-fill {
-            width: 0;
+        .progress-line-fill {
+            width: 0%;
             height: 100%;
-            background: var(--terracotta);
-            border-radius: 3px;
-            transition: width 0.4s ease;
+            background: linear-gradient(90deg, var(--sage), var(--terracotta));
+            border-radius: 4px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .story-bar.complete .story-fill {
+        /* Intro Slide Styles */
+        .intro-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--sage), #6b7a63);
+        }
+
+        .intro-icon i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .survey-encourage {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--sage);
+            font-style: italic;
+            margin-bottom: 32px;
+        }
+
+        .survey-start-btn {
             width: 100%;
+            padding: 18px 24px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
         }
 
-        .story-bar.active .story-fill {
-            width: 50%;
-            animation: fillProgress 0.3s ease forwards;
-        }
-
-        @keyframes fillProgress {
-            to { width: 100%; }
+        .survey-start-btn:hover {
+            background: var(--sandstone);
+            transform: translateY(-2px);
         }
 
         /* Survey Slides */
@@ -2495,30 +2527,30 @@
         const surveyTrigger = document.getElementById('survey-trigger');
         const surveyClose = document.getElementById('survey-close');
         const surveySlides = document.querySelectorAll('.survey-slide');
-        const storyBars = document.querySelectorAll('.story-bar');
+        const progressLineFill = document.getElementById('progress-line-fill');
         const modalEmail = document.getElementById('modal-email');
         const surveySubmit = document.getElementById('survey-submit');
         const surveyDone = document.getElementById('survey-done');
+        const surveyStart = document.getElementById('survey-start');
 
-        let currentSurveyQ = 1;
+        let currentSurveyQ = 'intro';
         const surveyAnswers = {};
+        const totalQuestions = 10;
 
         function openSurvey() {
             surveyModal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            showSurveySlide(1);
+            showSurveySlide('intro');
         }
 
         function closeSurvey() {
             surveyModal.classList.remove('active');
             document.body.style.overflow = '';
             // Reset survey
-            currentSurveyQ = 1;
+            currentSurveyQ = 'intro';
             surveySlides.forEach(s => s.classList.remove('active'));
-            surveySlides[0].classList.add('active');
-            storyBars.forEach(b => {
-                b.classList.remove('complete', 'active');
-            });
+            document.querySelector('.survey-slide[data-q="intro"]').classList.add('active');
+            progressLineFill.style.width = '0%';
             document.querySelectorAll('.survey-opt').forEach(o => o.classList.remove('selected'));
         }
 
@@ -2527,20 +2559,25 @@
             const targetSlide = document.querySelector(`.survey-slide[data-q="${qNum}"]`);
             if (targetSlide) targetSlide.classList.add('active');
 
-            // Update story progress bars
-            storyBars.forEach((bar, i) => {
-                const step = i + 1;
-                bar.classList.remove('complete', 'active');
-                if (step < qNum) {
-                    bar.classList.add('complete');
-                } else if (step === qNum) {
-                    bar.classList.add('active');
-                }
-            });
+            // Update progress line
+            if (qNum === 'intro') {
+                progressLineFill.style.width = '0%';
+            } else if (qNum === 'email' || qNum === 'success') {
+                progressLineFill.style.width = '100%';
+            } else {
+                const progress = (qNum / totalQuestions) * 100;
+                progressLineFill.style.width = `${progress}%`;
+            }
         }
 
         surveyTrigger.addEventListener('click', openSurvey);
         surveyClose.addEventListener('click', closeSurvey);
+
+        // Start button
+        surveyStart.addEventListener('click', () => {
+            currentSurveyQ = 1;
+            showSurveySlide(1);
+        });
 
         // Handle option selection - auto advance
         document.querySelectorAll('.survey-opt').forEach(opt => {
