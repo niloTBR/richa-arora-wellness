@@ -1,0 +1,2590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Richa Arora | Integrative Wellness</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Serif+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+    <style>
+        :root {
+            --peach: #E8B4A0;
+            --blush: #F5D5C8;
+            --cream: #FAF7F5;
+            --beige: #F0EBE6;
+            --sandstone: #C9A48A;
+            --terracotta: #B8856C;
+            --sage: #7D8B75;
+            --gold: #B8A067;
+            --dark: #2D2D2D;
+            --text: #5A5A5A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1.8;
+            background-color: var(--cream);
+            font-size: 15px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--dark);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Micro Eyebrow - TINY */
+        .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--sage) !important;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        /* Small utility text - standardized */
+        .micro-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 247, 245, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 24px 0;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 16px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--terracotta);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--terracotta);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--terracotta);
+            color: white;
+            text-decoration: none;
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--sandstone);
+            border-radius: 50px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--terracotta);
+            color: var(--terracotta);
+        }
+
+        .btn-outline::before {
+            background: rgba(232, 180, 160, 0.15);
+        }
+
+        .btn-outline:hover {
+            color: var(--terracotta);
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 140px 0 120px;
+            background: var(--beige);
+        }
+
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-content .eyebrow {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-headline {
+            font-size: 3.4rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        .hero-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--sandstone);
+            margin-bottom: 24px;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.6s forwards;
+        }
+
+        .hero-content p {
+            font-size: 0.85rem;
+            margin-bottom: 36px;
+            color: var(--text);
+            max-width: 440px;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.8s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 1s forwards;
+        }
+
+        /* Stats Ticker */
+        .stats-ticker {
+            background: var(--cream);
+            padding: 32px 0;
+            overflow: hidden;
+            border-top: 1px solid var(--blush);
+            border-bottom: 1px solid var(--blush);
+        }
+
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: ticker 25s linear infinite;
+        }
+
+        .ticker-content {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .ticker-item {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text);
+            white-space: nowrap;
+            padding: 0 24px;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .ticker-item strong {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: var(--terracotta);
+            font-weight: 400;
+            margin-right: 10px;
+            line-height: 1;
+        }
+
+        .ticker-divider {
+            color: var(--peach);
+            font-size: 0.6rem;
+        }
+
+        .stat-plus {
+            font-size: 0.75rem;
+            margin-left: -2px;
+            margin-right: 6px;
+            color: var(--terracotta);
+            vertical-align: super;
+        }
+
+        @keyframes ticker {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .hero-image {
+            aspect-ratio: 4/5;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 1s ease 0.6s forwards;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image .parallax-img,
+        .about-image .parallax-img {
+            position: absolute;
+            top: -5%;
+            left: 0;
+            width: 100%;
+            height: 110%;
+            background-size: cover;
+            background-position: center top;
+            will-change: transform;
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Word by word blur animation */
+        .blur-words .word {
+            display: inline-block;
+            opacity: 0;
+            filter: blur(8px);
+            animation: wordBlurIn 0.25s ease forwards;
+        }
+
+        @keyframes wordBlurIn {
+            to {
+                opacity: 1;
+                filter: blur(0);
+            }
+        }
+
+        /* Shimmer text effect */
+        .shimmer {
+            font-weight: 600;
+            background: linear-gradient(
+                90deg,
+                var(--terracotta) 0%,
+                var(--gold) 25%,
+                var(--terracotta) 50%,
+                var(--gold) 75%,
+                var(--terracotta) 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0% center;
+            }
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        /* Sections */
+        section {
+            padding: 120px 0;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* About */
+        .about {
+            background: var(--cream);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-image {
+            aspect-ratio: 3/4;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            margin-bottom: 28px;
+            line-height: 1.25;
+        }
+
+        .about-content p {
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .about-content .lead {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: var(--terracotta);
+            margin: 32px 0;
+            padding: 24px 0 24px 28px;
+            border-left: 3px solid var(--peach);
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* Framework */
+        .framework {
+            background: var(--beige);
+        }
+
+        .framework-header {
+            margin-bottom: 56px;
+        }
+
+        .framework-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .framework-header p {
+            font-size: 0.85rem;
+            max-width: 540px;
+            line-height: 1.7;
+        }
+
+        .framework-carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+            margin-left: calc((100vw - 1200px) / 2 + 40px);
+            margin-right: 0;
+            padding-right: 40px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        @media (max-width: 1280px) {
+            .framework-carousel {
+                margin-left: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .framework-carousel {
+                margin-left: 24px;
+                padding-right: 24px;
+            }
+        }
+
+        .framework-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .framework-item {
+            flex: 0 0 280px;
+            min-height: 420px;
+            border-radius: 20px;
+            scroll-snap-align: start;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .framework-item-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1;
+        }
+
+        .framework-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70%;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+            z-index: 2;
+        }
+
+        .framework-item:hover .framework-item-bg {
+            transform: scale(1.08);
+        }
+
+        .framework-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.5rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .framework-content {
+            position: relative;
+            z-index: 3;
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .framework-item h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 1.1;
+            color: white;
+        }
+
+        .framework-item p {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+        }
+
+        .framework-cta {
+            background: var(--sage);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .framework-cta::after {
+            display: none;
+        }
+
+        .framework-cta:hover {
+            background: #6b7a63;
+            transform: scale(1.02);
+        }
+
+        .framework-cta-content {
+            text-align: center;
+            padding: 32px;
+        }
+
+        .framework-cta h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.9);
+            transition: gap 0.3s ease;
+        }
+
+        .framework-cta:hover .cta-link {
+            gap: 12px;
+        }
+
+        .cta-link i {
+            font-size: 1.2rem;
+        }
+
+        .cta-icon {
+            font-size: 2.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .carousel-hint {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 28px;
+            font-size: 0.5rem;
+            color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .carousel-hint svg {
+            width: 12px;
+            height: 12px;
+        }
+
+        /* Services */
+        .services {
+            background: var(--cream);
+        }
+
+        .services-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 64px;
+            align-items: end;
+        }
+
+        .services-header h2 {
+            font-size: 2.2rem;
+            line-height: 1.2;
+        }
+
+        .services-header p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .service-card {
+            background: var(--beige);
+            padding: 48px 36px;
+            border: 1px solid transparent;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 520px;
+            border-radius: 20px;
+        }
+
+        .service-card:hover {
+            background: white;
+            border-color: var(--peach);
+            transform: translateY(-6px);
+        }
+
+        .service-icon-wrap {
+            width: 72px;
+            height: 72px;
+            background: var(--cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            border-radius: 18px;
+            font-size: 36px;
+            color: var(--terracotta);
+        }
+
+        .service-card h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .service-card > p {
+            font-size: 0.8rem;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-bottom: 28px;
+            padding-top: 20px;
+            border-top: 1px solid var(--peach);
+            flex-grow: 1;
+        }
+
+        .service-card li {
+            font-size: 0.7rem;
+            padding: 6px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text);
+        }
+
+        .service-card li svg {
+            width: 10px;
+            height: 10px;
+            color: var(--sage);
+            flex-shrink: 0;
+            stroke-width: 2.5;
+        }
+
+        .service-link {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--terracotta);
+            color: white;
+            text-decoration: none;
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: auto;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .service-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--sandstone);
+            border-radius: 50px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .service-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .service-link:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Courses / Books */
+        .courses {
+            background: var(--cream);
+            padding: 60px 0 120px;
+        }
+
+        .courses-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 48px;
+        }
+
+        .courses-header-left h2 {
+            font-size: 2.2rem;
+        }
+
+        
+        .books-slider {
+            overflow: hidden;
+            margin: 0 -40px;
+            padding: 0 40px;
+        }
+
+        .books-carousel {
+            display: flex;
+            gap: 32px;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .books-controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .books-btn {
+            width: 48px;
+            height: 48px;
+            background: var(--beige);
+            border: 1px solid var(--peach);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--terracotta);
+        }
+
+        .books-btn:hover {
+            background: var(--terracotta);
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .courses-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+        }
+
+        .book-card {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book {
+            width: 200px;
+            height: 280px;
+            border-radius: 4px 16px 16px 4px;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: perspective(1000px) rotateY(-8deg);
+            transition: transform 0.4s ease;
+            box-shadow:
+                8px 8px 20px rgba(0,0,0,0.15),
+                2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .book:hover {
+            transform: perspective(1000px) rotateY(-2deg) translateY(-8px);
+        }
+
+        .book-spine {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 16px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 4px 0 0 4px;
+        }
+
+        .book-cover {
+            position: absolute;
+            top: 0;
+            left: 16px;
+            right: 0;
+            bottom: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            border-radius: 0 16px 16px 0;
+        }
+
+        .book-cover h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: rgba(0,0,0,0.3);
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .book-cover .book-by {
+            font-size: 0.45rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: rgba(0,0,0,0.35);
+        }
+
+        .book-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--dark);
+            margin: 24px 0 8px;
+        }
+
+        .book-desc {
+            font-size: 0.75rem;
+            color: var(--text);
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .book-author {
+            font-size: 0.65rem;
+            color: rgba(0,0,0,0.5);
+        }
+
+        .book-buy-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--terracotta);
+            color: white;
+            text-decoration: none;
+            font-size: 0.55rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .book-buy-btn span {
+            margin-left: 8px;
+            font-weight: 600;
+        }
+
+        .book-buy-btn:hover {
+            background: var(--sandstone);
+            transform: translateY(-2px);
+        }
+
+        .book-thumb {
+            width: 36px;
+            height: 36px;
+            border-radius: 6px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .view-all-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 14px 32px;
+            background: var(--terracotta);
+            color: white;
+            text-decoration: none;
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .view-all-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--sandstone);
+            border-radius: 50px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .view-all-link:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .view-all-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .view-all-link i {
+            margin-left: 8px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--sage);
+            color: white;
+            overflow: hidden;
+        }
+
+        .testimonials .eyebrow {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .testimonials h2 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 48px;
+        }
+
+        .testimonials-slider {
+            position: relative;
+            overflow: hidden;
+            mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+            -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+        }
+
+        .testimonials-track {
+            display: flex;
+            gap: 24px;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .testimonial-card {
+            flex: 0 0 calc(40% - 16px);
+            background: rgba(255,255,255,0.08);
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+        }
+
+        .testimonial-card p {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-weight: 400;
+        }
+
+        .testimonial-author {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.6;
+        }
+
+        .slider-controls {
+            display: flex;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .slider-btn {
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: 1px solid rgba(255,255,255,0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: white;
+            border-radius: 50%;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .slider-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.15);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .slider-btn:hover::before {
+            transform: scale(1);
+        }
+
+        .slider-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        /* CTA */
+        .cta {
+            background: var(--terracotta);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .cta h2 {
+            color: white;
+            font-size: 2.4rem;
+            margin-bottom: 16px;
+        }
+
+        .cta p {
+            color: rgba(255,255,255,0.85);
+            font-size: 0.85rem;
+            max-width: 480px;
+            margin: 0 auto 36px;
+            line-height: 1.7;
+        }
+
+        .cta .btn {
+            background: white;
+            color: var(--terracotta);
+        }
+
+        .cta .btn::before {
+            background: var(--cream);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 72px 0 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 56px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            display: block;
+            margin-bottom: 16px;
+            font-size: 1.4rem;
+        }
+
+        .footer-brand p {
+            color: rgba(255,255,255,0.45);
+            font-size: 0.75rem;
+            max-width: 260px;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            color: rgba(255,255,255,0.35);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--peach);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.25);
+            font-size: 0.65rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image {
+                max-width: 100%;
+                width: 100%;
+                height: 400px;
+                margin: 40px auto 0;
+                aspect-ratio: auto;
+            }
+
+            .hero-headline {
+                font-size: 2.8rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-image {
+                max-width: 100%;
+                width: 100%;
+                height: 450px;
+                margin: 0 auto;
+                aspect-ratio: auto;
+            }
+
+            .services-header {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-card {
+                flex: 0 0 100%;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero-headline {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem !important;
+            }
+
+            .hero-image {
+                max-width: 100%;
+                height: 350px;
+                aspect-ratio: auto;
+            }
+
+            .hero-image .parallax-img,
+            .about-image .parallax-img {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-size: cover;
+                background-position: center;
+            }
+
+            .about-image {
+                max-width: 100%;
+                height: 400px;
+                aspect-ratio: auto;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 28px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Dr. Richa Arora</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#approach">Approach</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <p class="eyebrow">Integrative Wellness</p>
+                <h1 class="hero-headline">Treat the Root,<br>Not the Symptoms</h1>
+                                <p>Naturopath and Ayurvedic practitioner helping individuals <span class="shimmer">reverse lifestyle diseases</span> and reclaim their health through personalized, medicine-free protocols.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn">Book Consultation</a>
+                    <a href="#about" class="btn btn-outline">Meet Dr. Richa</a>
+                </div>
+                            </div>
+            <div class="hero-image">
+                <div class="parallax-img" style="background-image: url('Photos/Background.jpg')"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="stats-ticker">
+        <div class="ticker-track">
+            <div class="ticker-content">
+                <span class="ticker-item"><strong>12</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Years Practice</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>5,000</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Lives Transformed</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>100K</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Community Members</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>12</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Years Practice</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>5,000</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Lives Transformed</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>100K</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Community Members</span>
+                <span class="ticker-divider">✦</span>
+            </div>
+            <div class="ticker-content">
+                <span class="ticker-item"><strong>12</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Years Practice</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>5,000</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Lives Transformed</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>100K</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Community Members</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>12</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Years Practice</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>5,000</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Lives Transformed</span>
+                <span class="ticker-divider">✦</span>
+                <span class="ticker-item"><strong>100K</strong><i class="hgi-stroke hgi-plus-sign stat-plus"></i> Community Members</span>
+                <span class="ticker-divider">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image fade-in">
+                    <div class="parallax-img" style="background-image: url('Photos/Richa.png')"></div>
+                </div>
+                <div class="about-content fade-in">
+                    <p class="eyebrow">About</p>
+                    <h2>My goal is to treat the person—not the disease, not the system, not just the symptoms</h2>
+                    <p class="lead">This is personalized medicine. Medicine of the future, practiced today.</p>
+                    <p>As a Naturopath and Ayurvedic practitioner, I've spent over twelve years witnessing the same pattern: people trapped in cycles of medication, lifestyle diseases multiplying, hormonal and gut disorders becoming the norm.</p>
+                    <p>I built a different approach. One that asks why before prescribing what. One focused on nutrition, circadian rhythm, gut health, and the daily habits that actually move the needle.</p>
+                    <p>My mission is simple: <span class="shimmer">empower you to heal yourself</span>. Because lifelong dependence on medication is not the answer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="courses" id="courses">
+        <div class="container">
+            <div class="courses-header fade-in">
+                <div class="courses-header-left">
+                    <p class="eyebrow">Learn</p>
+                    <h2>Mini Guides & Courses</h2>
+                </div>
+                <a href="#" class="view-all-link">View All <i class="hgi-stroke hgi-arrow-right-01"></i></a>
+            </div>
+            <div class="books-slider">
+                <div class="books-carousel" id="books-track">
+                    <div class="book-card">
+                        <div class="book" style="background: linear-gradient(160deg, #E8D4C4 0%, #DBBFAB 100%);">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-thumb" style="background-image: url('Photos/Heal.jpg')"></div>
+                                <h4>The 12-Step Framework</h4>
+                                <span class="book-by">By Dr. Richa Arora</span>
+                            </div>
+                        </div>
+                        <p class="book-title">The 12-Step Healing Framework</p>
+                        <p class="book-desc">A complete roadmap from illness to independent wellness.</p>
+                        <a href="#" class="book-buy-btn">Buy Now <span>$10</span></a>
+                    </div>
+                    <div class="book-card">
+                        <div class="book" style="background: linear-gradient(160deg, #D4E4E8 0%, #BCCFD5 100%);">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-thumb" style="background-image: url('Photos/Balance.jpg')"></div>
+                                <h4>Ayurveda Basics</h4>
+                                <span class="book-by">By Dr. Richa Arora</span>
+                            </div>
+                        </div>
+                        <p class="book-title">Ayurveda for Modern Life</p>
+                        <p class="book-desc">Ancient wisdom adapted for today's busy lifestyle.</p>
+                        <a href="#" class="book-buy-btn">Buy Now <span>$5</span></a>
+                    </div>
+                    <div class="book-card">
+                        <div class="book" style="background: linear-gradient(160deg, #C5D4C0 0%, #B2C4AC 100%);">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-thumb" style="background-image: url('Photos/Nourish.jpg')"></div>
+                                <h4>Satvik Cooking</h4>
+                                <span class="book-by">By Dr. Richa Arora</span>
+                            </div>
+                        </div>
+                        <p class="book-title">Satvik Cooking Essentials</p>
+                        <p class="book-desc">Nourishing recipes that heal from the inside out.</p>
+                        <a href="#" class="book-buy-btn">Buy Now <span>$10</span></a>
+                    </div>
+                    <div class="book-card">
+                        <div class="book" style="background: linear-gradient(160deg, #F5DDD0 0%, #EBCBBA 100%);">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-thumb" style="background-image: url('Photos/Nurture.jpg')"></div>
+                                <h4>Hormone Balance</h4>
+                                <span class="book-by">By Dr. Richa Arora</span>
+                            </div>
+                        </div>
+                        <p class="book-title">Hormone Balance Naturally</p>
+                        <p class="book-desc">Reset your hormones through lifestyle and rhythm.</p>
+                        <a href="#" class="book-buy-btn">Buy Now <span>$10</span></a>
+                    </div>
+                    <div class="book-card">
+                        <div class="book" style="background: linear-gradient(160deg, #D8C8B8 0%, #C9B8A6 100%);">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-thumb" style="background-image: url('Photos/Purify.jpg')"></div>
+                                <h4>Gut Health Reset</h4>
+                                <span class="book-by">By Dr. Richa Arora</span>
+                            </div>
+                        </div>
+                        <p class="book-title">Gut Health Reset</p>
+                        <p class="book-desc">Restore your digestive system naturally.</p>
+                        <a href="#" class="book-buy-btn">Buy Now <span>$5</span></a>
+                    </div>
+                    <div class="book-card">
+                        <div class="book" style="background: linear-gradient(160deg, #E0E8D8 0%, #CED9C4 100%);">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-thumb" style="background-image: url('Photos/Energise.jpg')"></div>
+                                <h4>Morning Rituals</h4>
+                                <span class="book-by">By Dr. Richa Arora</span>
+                            </div>
+                        </div>
+                        <p class="book-title">Morning Rituals for Vitality</p>
+                        <p class="book-desc">Start your day with energy and intention.</p>
+                        <a href="#" class="book-buy-btn">Buy Now <span>$5</span></a>
+                    </div>
+                    <div class="book-card">
+                        <div class="book" style="background: linear-gradient(160deg, #E4D8E8 0%, #D4C4DA 100%);">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-thumb" style="background-image: url('Photos/Focus.jpg')"></div>
+                                <h4>Mental Clarity</h4>
+                                <span class="book-by">By Dr. Richa Arora</span>
+                            </div>
+                        </div>
+                        <p class="book-title">Mental Clarity Guide</p>
+                        <p class="book-desc">Cultivate focus and calm in a distracted world.</p>
+                        <a href="#" class="book-buy-btn">Buy Now <span>$10</span></a>
+                    </div>
+                    <div class="book-card">
+                        <div class="book" style="background: linear-gradient(160deg, #D0E0E4 0%, #BACECC 100%);">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-thumb" style="background-image: url('Photos/Sustain.jpg')"></div>
+                                <h4>Medicine-Free</h4>
+                                <span class="book-by">By Dr. Richa Arora</span>
+                            </div>
+                        </div>
+                        <p class="book-title">Medicine-Free Living</p>
+                        <p class="book-desc">Build lasting habits for lifelong wellbeing.</p>
+                        <a href="#" class="book-buy-btn">Buy Now <span>$10</span></a>
+                    </div>
+                    <div class="book-card">
+                        <div class="book" style="background: linear-gradient(160deg, #F0E0D4 0%, #E2CFC0 100%);">
+                            <div class="book-spine"></div>
+                            <div class="book-cover">
+                                <div class="book-thumb" style="background-image: url('Photos/Regenerate.jpg')"></div>
+                                <h4>Sleep & Repair</h4>
+                                <span class="book-by">By Dr. Richa Arora</span>
+                            </div>
+                        </div>
+                        <p class="book-title">Sleep & Repair Protocol</p>
+                        <p class="book-desc">Optimize rest for deep cellular regeneration.</p>
+                        <a href="#" class="book-buy-btn">Buy Now <span>$5</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="books-controls">
+                <button class="books-btn" id="books-prev">
+                    <i class="hgi-stroke hgi-arrow-left-01"></i>
+                </button>
+                <button class="books-btn" id="books-next">
+                    <i class="hgi-stroke hgi-arrow-right-01"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="framework" id="approach">
+        <div class="container">
+            <div class="framework-header fade-in">
+                <p class="eyebrow">The Approach</p>
+                <h2>A 12-Step Framework for Complete Healing</h2>
+                <p>Each step builds upon the last, guiding you from illness to independent wellness. Not a quick fix—a complete transformation.</p>
+            </div>
+        </div>
+        <div class="framework-carousel">
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Purify.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">01</div>
+                    <h3>Purify</h3>
+                    <p>Clear accumulated toxins and reset detoxification pathways.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Energise.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">02</div>
+                    <h3>Energise</h3>
+                    <p>Restore cellular vitality and address root causes of fatigue.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Focus.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">03</div>
+                    <h3>Focus</h3>
+                    <p>Cultivate mental clarity and sustained concentration.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Move.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">04</div>
+                    <h3>Movement</h3>
+                    <p>Reawaken the body through intentional physical practice.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Nourish.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">05</div>
+                    <h3>Nourish</h3>
+                    <p>Transform your relationship with food as medicine.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Balance.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">06</div>
+                    <h3>Balance</h3>
+                    <p>Harmonize hormones through lifestyle and rhythm.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Regenerate.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">07</div>
+                    <h3>Regenerate</h3>
+                    <p>Activate innate repair mechanisms.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Nurture.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">08</div>
+                    <h3>Nurture</h3>
+                    <p>Tend to emotional wellbeing and resilience.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Repair.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">09</div>
+                    <h3>Repair</h3>
+                    <p>Mend compromised systems and rebuild strength.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Heal.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">10</div>
+                    <h3>Heal</h3>
+                    <p>Experience integration of all preceding steps.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Rejuvinate.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">11</div>
+                    <h3>Rejuvenate</h3>
+                    <p>Go beyond recovery to flourishing.</p>
+                </div>
+            </div>
+            <div class="framework-item">
+                <div class="framework-item-bg" style="background-image: url('Photos/Sustain.jpg')"></div>
+                <div class="framework-content">
+                    <div class="framework-number">12</div>
+                    <h3>Sustain</h3>
+                    <p>Build lasting habits for lifelong wellbeing.</p>
+                </div>
+            </div>
+            <a href="#contact" class="framework-item framework-cta">
+                <div class="framework-cta-content">
+                    <i class="hgi-stroke hgi-lotus cta-icon"></i>
+                    <h3>Live a Medicine Free Life</h3>
+                    <span class="cta-link"><i class="hgi-stroke hgi-arrow-right-01"></i></span>
+                </div>
+            </a>
+        </div>
+        <div class="container">
+            <div class="carousel-hint">
+                <i class="hgi-stroke hgi-arrow-right-01"></i>
+                <span>Scroll to explore</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header fade-in">
+                <div>
+                    <p class="eyebrow">Services</p>
+                    <h2>Begin Your Transformation</h2>
+                </div>
+                <p>Structured pathways to lasting wellness. Not dependency, but empowerment. Not management, but transformation.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon-wrap">
+                        <i class="hgi-stroke hgi-clipboard"></i>
+                    </div>
+                    <h3>Consultation</h3>
+                    <p>In-depth one-on-one sessions focused on identifying root causes and building your personalized healing protocol.</p>
+                    <ul>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Comprehensive health assessment</li>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Root cause identification</li>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Personalized protocol</li>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Ongoing support</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Book Now</a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon-wrap">
+                        <i class="hgi-stroke hgi-calendar-01"></i>
+                    </div>
+                    <h3>Programs</h3>
+                    <p>Structured programs built on the 12-step framework, from foundational wellness to condition-specific protocols.</p>
+                    <ul>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> PCOD & Thyroid</li>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Gut Health & Hormones</li>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Diabetes Management</li>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Immunity & Detox</li>
+                    </ul>
+                    <a href="#contact" class="service-link">Explore Programs</a>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon-wrap">
+                        <i class="hgi-stroke hgi-book-open-01"></i>
+                    </div>
+                    <h3>Courses</h3>
+                    <p>Deep-dive educational courses in Ayurveda, nutrition, and traditional healing sciences for self-sufficiency.</p>
+                    <ul>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Ayurveda Fundamentals</li>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Satvik Cooking</li>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Herbs & Remedies</li>
+                        <li><i class="hgi-stroke hgi-tick-01"></i> Family Wellness</li>
+                    </ul>
+                    <a href="#contact" class="service-link">View Courses</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <p class="eyebrow fade-in">Results</p>
+            <h2 class="fade-in">Stories of Transformation</h2>
+            <div class="testimonials-slider">
+                <div class="testimonials-track" id="testimonials-track">
+                    <div class="testimonial-card">
+                        <p>"After years of medication for hormonal issues, I found real answers here. The framework helped me understand my body for the first time."</p>
+                        <div class="testimonial-author">Priya M. — Hormonal Imbalance</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Not quick fixes, but deep understanding. My energy, sleep, and digestive issues all resolved as we worked through the framework."</p>
+                        <div class="testimonial-author">Rajesh K. — Chronic Fatigue</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"I came with anxiety and left understanding how my gut, sleep, and stress were interconnected. Genuinely holistic."</p>
+                        <div class="testimonial-author">Ananya S. — Anxiety & Stress</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"My daughter's recurring health issues had us visiting doctors constantly. The natural approach taught our family lasting immunity."</p>
+                        <div class="testimonial-author">Meera T. — Pediatric Wellness</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Struggled with PCOD for eight years. Within four months, my cycles normalized without a single pharmaceutical."</p>
+                        <div class="testimonial-author">Kavitha R. — PCOD</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"The thyroid medication I thought I'd need forever is now history. Lifestyle changes that actually work."</p>
+                        <div class="testimonial-author">Sunita P. — Thyroid</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"My skin cleared up when we addressed the gut. No one had ever made that connection for me before."</p>
+                        <div class="testimonial-author">Deepa V. — Skin Conditions</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Diabetes management without constantly increasing doses. My numbers improved through food and rhythm alone."</p>
+                        <div class="testimonial-author">Arun M. — Type 2 Diabetes</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Chronic joint pain for fifteen years. The anti-inflammatory protocol changed everything within weeks."</p>
+                        <div class="testimonial-author">Lakshmi G. — Joint Pain</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"I was exhausted every single day. Now I wake up with energy I forgot was possible."</p>
+                        <div class="testimonial-author">Neha S. — Chronic Fatigue</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Weight that wouldn't budge for years finally shifted when we fixed my metabolism at the root."</p>
+                        <div class="testimonial-author">Ritu K. — Weight Management</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p>"Fertility struggles for three years. After the program, we conceived naturally. Forever grateful."</p>
+                        <div class="testimonial-author">Pooja D. — Fertility</div>
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button class="slider-btn" id="prev-btn">
+                        <i class="hgi-stroke hgi-arrow-left-01"></i>
+                    </button>
+                    <button class="slider-btn" id="next-btn">
+                        <i class="hgi-stroke hgi-arrow-right-01"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <div class="container fade-in">
+            <h2>Your Healing Journey Begins Here</h2>
+            <p>Whether reversing a chronic condition or seeking to elevate your quality of life, discover what is possible when you address the root.</p>
+            <a href="mailto:hello@richarora.co.in" class="btn">Schedule Consultation</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo">Dr. Richa Arora</a>
+                    <p>Integrative wellness practitioner helping individuals live medicine-free through root-cause healing.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Navigate</h4>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#approach">Approach</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:hello@richarora.co.in">hello@richarora.co.in</a></li>
+                            <li><a href="https://instagram.com/dr.richa_arora">Instagram</a></li>
+                            <li><a href="#">YouTube</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Dr. Richa Arora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Survey Widget -->
+    <div class="survey-widget" id="survey-widget">
+        <div class="survey-widget-btn" id="survey-trigger">
+            <i class="hgi-stroke hgi-clipboard"></i>
+            <span>Free Health Check</span>
+        </div>
+    </div>
+
+    <!-- Full Screen Survey Modal -->
+    <div class="survey-modal" id="survey-modal">
+        <div class="survey-modal-content">
+            <button class="survey-close" id="survey-close">
+                <i class="hgi-stroke hgi-cancel-01"></i>
+            </button>
+
+            <!-- Instagram-style Progress Stepper -->
+            <div class="story-progress">
+                <div class="story-bar" data-step="1"><div class="story-fill"></div></div>
+                <div class="story-bar" data-step="2"><div class="story-fill"></div></div>
+                <div class="story-bar" data-step="3"><div class="story-fill"></div></div>
+                <div class="story-bar" data-step="4"><div class="story-fill"></div></div>
+                <div class="story-bar" data-step="5"><div class="story-fill"></div></div>
+                <div class="story-bar" data-step="6"><div class="story-fill"></div></div>
+                <div class="story-bar" data-step="7"><div class="story-fill"></div></div>
+                <div class="story-bar" data-step="8"><div class="story-fill"></div></div>
+                <div class="story-bar" data-step="9"><div class="story-fill"></div></div>
+                <div class="story-bar" data-step="10"><div class="story-fill"></div></div>
+            </div>
+
+            <div class="survey-slides-wrapper">
+                <!-- Question 1 -->
+                <div class="survey-slide active" data-q="1">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-sun-03"></i></div>
+                    <p class="survey-q-num">1 of 10</p>
+                    <h3 class="survey-question">How would you describe your energy levels?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="high"><i class="hgi-stroke hgi-flash"></i> Consistently High</button>
+                        <button class="survey-opt" data-val="moderate"><i class="hgi-stroke hgi-activity-01"></i> Moderate with Dips</button>
+                        <button class="survey-opt" data-val="low"><i class="hgi-stroke hgi-battery-low"></i> Generally Low</button>
+                        <button class="survey-opt" data-val="exhausted"><i class="hgi-stroke hgi-sleeping"></i> Chronically Exhausted</button>
+                    </div>
+                </div>
+
+                <!-- Question 2 -->
+                <div class="survey-slide" data-q="2">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-moon-02"></i></div>
+                    <p class="survey-q-num">2 of 10</p>
+                    <h3 class="survey-question">How would you rate your sleep quality?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="excellent"><i class="hgi-stroke hgi-star"></i> Excellent</button>
+                        <button class="survey-opt" data-val="good"><i class="hgi-stroke hgi-thumbs-up"></i> Good</button>
+                        <button class="survey-opt" data-val="poor"><i class="hgi-stroke hgi-sad-01"></i> Poor</button>
+                        <button class="survey-opt" data-val="insomnia"><i class="hgi-stroke hgi-alert-02"></i> Chronic Issues</button>
+                    </div>
+                </div>
+
+                <!-- Question 3 -->
+                <div class="survey-slide" data-q="3">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-apple-01"></i></div>
+                    <p class="survey-q-num">3 of 10</p>
+                    <h3 class="survey-question">How is your digestive health?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="perfect"><i class="hgi-stroke hgi-tick-01"></i> Perfect</button>
+                        <button class="survey-opt" data-val="occasional"><i class="hgi-stroke hgi-notification-03"></i> Occasional Issues</button>
+                        <button class="survey-opt" data-val="frequent"><i class="hgi-stroke hgi-alert-circle"></i> Frequent Problems</button>
+                        <button class="survey-opt" data-val="chronic"><i class="hgi-stroke hgi-cancel-circle"></i> Chronic Condition</button>
+                    </div>
+                </div>
+
+                <!-- Question 4 -->
+                <div class="survey-slide" data-q="4">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-meditation"></i></div>
+                    <p class="survey-q-num">4 of 10</p>
+                    <h3 class="survey-question">How do you experience stress?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="managed"><i class="hgi-stroke hgi-yoga-01"></i> Well Managed</button>
+                        <button class="survey-opt" data-val="moderate"><i class="hgi-stroke hgi-time-quarter-pass"></i> Moderate Stress</button>
+                        <button class="survey-opt" data-val="high"><i class="hgi-stroke hgi-fire"></i> High Stress</button>
+                        <button class="survey-opt" data-val="burnout"><i class="hgi-stroke hgi-danger"></i> Burnout</button>
+                    </div>
+                </div>
+
+                <!-- Question 5 -->
+                <div class="survey-slide" data-q="5">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-organic-food"></i></div>
+                    <p class="survey-q-num">5 of 10</p>
+                    <h3 class="survey-question">How would you describe your diet?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="whole"><i class="hgi-stroke hgi-leaf-01"></i> Whole Foods</button>
+                        <button class="survey-opt" data-val="mixed"><i class="hgi-stroke hgi-dish-01"></i> Mixed</button>
+                        <button class="survey-opt" data-val="processed"><i class="hgi-stroke hgi-pizza-01"></i> Mostly Processed</button>
+                        <button class="survey-opt" data-val="inconsistent"><i class="hgi-stroke hgi-help"></i> Inconsistent</button>
+                    </div>
+                </div>
+
+                <!-- Question 6 -->
+                <div class="survey-slide" data-q="6">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-dumbbell-02"></i></div>
+                    <p class="survey-q-num">6 of 10</p>
+                    <h3 class="survey-question">How often do you exercise?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="daily"><i class="hgi-stroke hgi-running-shoes"></i> Daily</button>
+                        <button class="survey-opt" data-val="regular"><i class="hgi-stroke hgi-calendar-03"></i> 3-4 Times/Week</button>
+                        <button class="survey-opt" data-val="occasional"><i class="hgi-stroke hgi-timer-01"></i> Occasional</button>
+                        <button class="survey-opt" data-val="sedentary"><i class="hgi-stroke hgi-armchair"></i> Sedentary</button>
+                    </div>
+                </div>
+
+                <!-- Question 7 -->
+                <div class="survey-slide" data-q="7">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-dna"></i></div>
+                    <p class="survey-q-num">7 of 10</p>
+                    <h3 class="survey-question">Any hormonal symptoms?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-double-01"></i> None</button>
+                        <button class="survey-opt" data-val="mild"><i class="hgi-stroke hgi-thermometer"></i> Mild</button>
+                        <button class="survey-opt" data-val="moderate"><i class="hgi-stroke hgi-heartbeat"></i> Moderate</button>
+                        <button class="survey-opt" data-val="diagnosed"><i class="hgi-stroke hgi-stethoscope-02"></i> Diagnosed Condition</button>
+                    </div>
+                </div>
+
+                <!-- Question 8 -->
+                <div class="survey-slide" data-q="8">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-medicine-01"></i></div>
+                    <p class="survey-q-num">8 of 10</p>
+                    <h3 class="survey-question">Are you on any medications?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-01"></i> None</button>
+                        <button class="survey-opt" data-val="occasional"><i class="hgi-stroke hgi-first-aid-kit"></i> Occasional</button>
+                        <button class="survey-opt" data-val="regular"><i class="hgi-stroke hgi-capsule"></i> Regular</button>
+                        <button class="survey-opt" data-val="multiple"><i class="hgi-stroke hgi-medicine-bottle-02"></i> Multiple</button>
+                    </div>
+                </div>
+
+                <!-- Question 9 -->
+                <div class="survey-slide" data-q="9">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-target-02"></i></div>
+                    <p class="survey-q-num">9 of 10</p>
+                    <h3 class="survey-question">What's your primary health goal?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="energy"><i class="hgi-stroke hgi-flash"></i> More Energy</button>
+                        <button class="survey-opt" data-val="weight"><i class="hgi-stroke hgi-body-weight"></i> Weight Management</button>
+                        <button class="survey-opt" data-val="reverse"><i class="hgi-stroke hgi-heal"></i> Reverse a Condition</button>
+                        <button class="survey-opt" data-val="prevent"><i class="hgi-stroke hgi-shield-01"></i> Prevention</button>
+                    </div>
+                </div>
+
+                <!-- Question 10 -->
+                <div class="survey-slide" data-q="10">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-lotus"></i></div>
+                    <p class="survey-q-num">10 of 10</p>
+                    <h3 class="survey-question">Ready to commit to change?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="fully"><i class="hgi-stroke hgi-rocket-01"></i> Fully Committed</button>
+                        <button class="survey-opt" data-val="mostly"><i class="hgi-stroke hgi-thumb-up"></i> Mostly Ready</button>
+                        <button class="survey-opt" data-val="gradual"><i class="hgi-stroke hgi-stairs-up"></i> Gradual Steps</button>
+                        <button class="survey-opt" data-val="exploring"><i class="hgi-stroke hgi-compass"></i> Still Exploring</button>
+                    </div>
+                </div>
+
+                <!-- Email Capture -->
+                <div class="survey-slide" data-q="email">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-mail-01"></i></div>
+                    <h3 class="survey-question">Get Your Free Assessment</h3>
+                    <p class="survey-subtitle">Enter your email to receive personalized health insights based on your responses.</p>
+                    <input type="email" class="survey-email" id="modal-email" placeholder="your@email.com">
+                    <button class="survey-submit" id="survey-submit">Get My Results <i class="hgi-stroke hgi-arrow-right-01"></i></button>
+                    <p class="survey-privacy"><i class="hgi-stroke hgi-lock-01"></i> No spam, ever.</p>
+                </div>
+
+                <!-- Success -->
+                <div class="survey-slide" data-q="success">
+                    <div class="survey-success-icon"><i class="hgi-stroke hgi-tick-01"></i></div>
+                    <h3 class="survey-question">You're All Set!</h3>
+                    <p class="survey-subtitle">Dr. Richa will send your personalized assessment within 24 hours.</p>
+                    <button class="survey-done" id="survey-done">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Floating Survey Widget */
+        .survey-widget {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+        }
+
+        .survey-widget-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            background: var(--terracotta);
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(184, 133, 108, 0.4);
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .survey-widget-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(184, 133, 108, 0.5);
+        }
+
+        .survey-widget-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Survey Modal */
+        .survey-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(45, 45, 45, 0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .survey-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .survey-modal-content {
+            width: 100%;
+            max-width: 480px;
+            height: 100%;
+            max-height: 100vh;
+            background: var(--cream);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .survey-modal-content {
+                max-height: 90vh;
+                border-radius: 24px;
+                margin: 20px;
+            }
+        }
+
+        .survey-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.05);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .survey-close:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .survey-close i {
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        /* Instagram-style Progress */
+        .story-progress {
+            display: flex;
+            gap: 4px;
+            padding: 16px 20px;
+            background: var(--cream);
+        }
+
+        .story-bar {
+            flex: 1;
+            height: 3px;
+            background: var(--blush);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .story-fill {
+            width: 0;
+            height: 100%;
+            background: var(--terracotta);
+            border-radius: 3px;
+            transition: width 0.4s ease;
+        }
+
+        .story-bar.complete .story-fill {
+            width: 100%;
+        }
+
+        .story-bar.active .story-fill {
+            width: 50%;
+            animation: fillProgress 0.3s ease forwards;
+        }
+
+        @keyframes fillProgress {
+            to { width: 100%; }
+        }
+
+        /* Survey Slides */
+        .survey-slides-wrapper {
+            flex: 1;
+            padding: 20px 28px 40px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .survey-slide {
+            display: none;
+            animation: slideIn 0.4s ease;
+        }
+
+        .survey-slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .survey-icon {
+            width: 64px;
+            height: 64px;
+            background: white;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .survey-icon i {
+            font-size: 28px;
+            color: var(--terracotta);
+        }
+
+        .survey-q-num {
+            text-align: center;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--sage);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .survey-question {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 28px;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+        .survey-subtitle {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* Survey Options */
+        .survey-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .survey-opt {
+            width: 100%;
+            padding: 16px 20px;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.9rem;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .survey-opt:hover {
+            border-color: var(--peach);
+            transform: translateY(-2px);
+        }
+
+        .survey-opt.selected {
+            border-color: var(--terracotta);
+            background: linear-gradient(135deg, rgba(232, 180, 160, 0.15), rgba(184, 133, 108, 0.1));
+        }
+
+        .survey-opt i {
+            font-size: 1.3rem;
+            color: var(--terracotta);
+            flex-shrink: 0;
+        }
+
+        /* Email Input */
+        .survey-email {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--blush);
+            border-radius: 14px;
+            font-size: 1rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .survey-email:focus {
+            outline: none;
+            border-color: var(--terracotta);
+        }
+
+        .survey-submit {
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .survey-submit:hover {
+            background: var(--sandstone);
+            transform: translateY(-2px);
+        }
+
+        .survey-privacy {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text);
+            opacity: 0.6;
+            margin-top: 16px;
+        }
+
+        .survey-privacy i {
+            color: var(--sage);
+            margin-right: 4px;
+        }
+
+        /* Success */
+        .survey-success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--sage), #6b7a63);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto 24px;
+            animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .survey-success-icon i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .survey-done {
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--sage);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .survey-done:hover {
+            background: #6b7a63;
+        }
+    </style>
+
+    <script>
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -60px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Testimonials slider - 12 cards, 2.5 visible at a time on desktop
+        const track = document.getElementById('testimonials-track');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let currentSlide = 0;
+
+        function updateSlider() {
+            const isMobile = window.innerWidth <= 1024;
+            const slideWidth = isMobile ? 100 : 42;
+            const maxSlide = isMobile ? 11 : 9;
+            currentSlide = Math.min(currentSlide, maxSlide);
+            track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
+        }
+
+        nextBtn.addEventListener('click', () => {
+            const isMobile = window.innerWidth <= 1024;
+            const maxSlide = isMobile ? 11 : 5;
+            currentSlide = Math.min(currentSlide + 1, maxSlide);
+            updateSlider();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentSlide = Math.max(currentSlide - 1, 0);
+            updateSlider();
+        });
+
+        window.addEventListener('resize', updateSlider);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Word by word blur animation for headlines
+        function splitIntoWords(element) {
+            const text = element.innerHTML;
+            const words = text.split(/(\s+|<br\s*\/?>)/);
+            const isH2 = element.tagName === 'H2';
+            const delay = isH2 ? 0.025 : 0.04;
+            element.innerHTML = words.map((word, i) => {
+                if (word.match(/^\s+$/) || word.match(/<br\s*\/?>/)) return word;
+                return `<span class="word" style="animation-delay: ${i * delay}s">${word}</span>`;
+            }).join(' ');
+            element.classList.add('blur-words');
+        }
+
+        // Apply to hero headline immediately
+        const heroHeadline = document.querySelector('.hero-headline');
+        if (heroHeadline) splitIntoWords(heroHeadline);
+
+        // Apply to other headlines on scroll
+        const blurObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('blur-words')) {
+                    splitIntoWords(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('h2').forEach(h2 => blurObserver.observe(h2));
+
+        // Parallax effect for images
+        const parallaxImages = document.querySelectorAll('.parallax-img');
+
+        function updateParallax() {
+            parallaxImages.forEach(img => {
+                const container = img.parentElement;
+                const rect = container.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+
+                if (rect.top < windowHeight && rect.bottom > 0) {
+                    const scrollPercent = (windowHeight - rect.top) / (windowHeight + rect.height);
+                    const translateY = (scrollPercent - 0.5) * 40;
+                    img.style.transform = `translateY(${translateY}px)`;
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateParallax);
+        updateParallax();
+
+        // Books carousel slider - infinite loop
+        const booksTrack = document.getElementById('books-track');
+        const booksPrev = document.getElementById('books-prev');
+        const booksNext = document.getElementById('books-next');
+        let booksSlide = 0;
+        const totalBooks = 9;
+        const booksVisible = 3;
+        const maxBooksSlide = Math.ceil(totalBooks / booksVisible) - 1; // 2
+
+        function updateBooksSlider() {
+            booksTrack.style.transform = `translateX(-${booksSlide * (100 / booksVisible) * booksVisible}%)`;
+        }
+
+        booksNext.addEventListener('click', () => {
+            booksSlide++;
+            if (booksSlide > maxBooksSlide) {
+                booksSlide = 0;
+            }
+            updateBooksSlider();
+        });
+
+        booksPrev.addEventListener('click', () => {
+            booksSlide--;
+            if (booksSlide < 0) {
+                booksSlide = maxBooksSlide;
+            }
+            updateBooksSlider();
+        });
+
+        // Survey Modal Logic
+        const surveyModal = document.getElementById('survey-modal');
+        const surveyTrigger = document.getElementById('survey-trigger');
+        const surveyClose = document.getElementById('survey-close');
+        const surveySlides = document.querySelectorAll('.survey-slide');
+        const storyBars = document.querySelectorAll('.story-bar');
+        const modalEmail = document.getElementById('modal-email');
+        const surveySubmit = document.getElementById('survey-submit');
+        const surveyDone = document.getElementById('survey-done');
+
+        let currentSurveyQ = 1;
+        const surveyAnswers = {};
+
+        function openSurvey() {
+            surveyModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            showSurveySlide(1);
+        }
+
+        function closeSurvey() {
+            surveyModal.classList.remove('active');
+            document.body.style.overflow = '';
+            // Reset survey
+            currentSurveyQ = 1;
+            surveySlides.forEach(s => s.classList.remove('active'));
+            surveySlides[0].classList.add('active');
+            storyBars.forEach(b => {
+                b.classList.remove('complete', 'active');
+            });
+            document.querySelectorAll('.survey-opt').forEach(o => o.classList.remove('selected'));
+        }
+
+        function showSurveySlide(qNum) {
+            surveySlides.forEach(s => s.classList.remove('active'));
+            const targetSlide = document.querySelector(`.survey-slide[data-q="${qNum}"]`);
+            if (targetSlide) targetSlide.classList.add('active');
+
+            // Update story progress bars
+            storyBars.forEach((bar, i) => {
+                const step = i + 1;
+                bar.classList.remove('complete', 'active');
+                if (step < qNum) {
+                    bar.classList.add('complete');
+                } else if (step === qNum) {
+                    bar.classList.add('active');
+                }
+            });
+        }
+
+        surveyTrigger.addEventListener('click', openSurvey);
+        surveyClose.addEventListener('click', closeSurvey);
+
+        // Handle option selection - auto advance
+        document.querySelectorAll('.survey-opt').forEach(opt => {
+            opt.addEventListener('click', function() {
+                const slide = this.closest('.survey-slide');
+                const qNum = parseInt(slide.dataset.q);
+
+                // Select option
+                slide.querySelectorAll('.survey-opt').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                surveyAnswers[qNum] = this.dataset.val;
+
+                // Auto advance after brief delay
+                setTimeout(() => {
+                    if (qNum < 10) {
+                        currentSurveyQ = qNum + 1;
+                        showSurveySlide(currentSurveyQ);
+                    } else {
+                        // Show email slide
+                        showSurveySlide('email');
+                    }
+                }, 400);
+            });
+        });
+
+        // Email submit
+        surveySubmit.addEventListener('click', () => {
+            const email = modalEmail.value;
+            if (email && email.includes('@')) {
+                surveyAnswers.email = email;
+                console.log('Survey submitted:', surveyAnswers);
+                showSurveySlide('success');
+            }
+        });
+
+        // Done button
+        surveyDone.addEventListener('click', closeSurvey);
+
+        // Close on background click
+        surveyModal.addEventListener('click', (e) => {
+            if (e.target === surveyModal) {
+                closeSurvey();
+            }
+        });
+    </script>
+</body>
+</html>

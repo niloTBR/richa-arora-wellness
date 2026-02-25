@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Assessment | Dr. Richa Arora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+    <style>
+        :root {
+            --peach: #E8B4A0;
+            --blush: #F5D5C8;
+            --cream: #FAF7F5;
+            --beige: #F0EBE6;
+            --sandstone: #C9A48A;
+            --terracotta: #B8856C;
+            --sage: #7D8B75;
+            --gold: #B8A067;
+            --dark: #2D2D2D;
+            --text: #5A5A5A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1.6;
+            background: linear-gradient(180deg, var(--beige) 0%, var(--cream) 100%);
+            min-height: 100vh;
+            font-size: 15px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--dark);
+            font-weight: 400;
+        }
+
+        .survey-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .survey-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .survey-logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: var(--terracotta);
+            margin-bottom: 24px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 32px;
+        }
+
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--sage);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--blush);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--sage), var(--terracotta));
+            border-radius: 4px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Question Slides */
+        .questions-wrapper {
+            flex: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+        }
+
+        .question-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+            pointer-events: auto;
+            position: relative;
+        }
+
+        .question-slide.prev {
+            transform: translateX(-50px);
+        }
+
+        .question-icon {
+            width: 72px;
+            height: 72px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .question-icon i {
+            font-size: 32px;
+            color: var(--terracotta);
+        }
+
+        .question-number {
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--sage);
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .question-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 32px;
+            line-height: 1.3;
+        }
+
+        /* Options */
+        .options-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-btn {
+            padding: 18px 24px;
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-align: left;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        .option-btn:hover {
+            border-color: var(--peach);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .option-btn.selected {
+            border-color: var(--terracotta);
+            background: linear-gradient(135deg, rgba(232, 180, 160, 0.1), rgba(184, 133, 108, 0.1));
+        }
+
+        .option-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--beige);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .option-btn.selected .option-icon {
+            background: var(--terracotta);
+        }
+
+        .option-icon i {
+            font-size: 20px;
+            color: var(--terracotta);
+        }
+
+        .option-btn.selected .option-icon i {
+            color: white;
+        }
+
+        .option-content {
+            flex: 1;
+        }
+
+        .option-title {
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .option-desc {
+            font-size: 0.75rem;
+            color: var(--text);
+            opacity: 0.7;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 40px;
+            padding-bottom: 20px;
+        }
+
+        .nav-btn {
+            flex: 1;
+            padding: 16px 24px;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .nav-btn.back {
+            background: transparent;
+            border: 1px solid var(--peach);
+            color: var(--terracotta);
+            flex: 0 0 auto;
+            padding: 16px 20px;
+        }
+
+        .nav-btn.back:hover {
+            background: rgba(232, 180, 160, 0.15);
+        }
+
+        .nav-btn.next {
+            background: var(--terracotta);
+            color: white;
+        }
+
+        .nav-btn.next:hover {
+            background: var(--sandstone);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        /* Email Capture Slide */
+        .email-slide {
+            text-align: center;
+        }
+
+        .email-slide .question-text {
+            margin-bottom: 16px;
+        }
+
+        .email-subtitle {
+            font-size: 0.9rem;
+            color: var(--text);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .email-input-wrap {
+            margin-bottom: 20px;
+        }
+
+        .email-input {
+            width: 100%;
+            padding: 18px 24px;
+            border: 2px solid var(--blush);
+            border-radius: 16px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            background: white;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .email-input:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 4px rgba(184, 133, 108, 0.1);
+        }
+
+        .email-input::placeholder {
+            color: var(--sandstone);
+            opacity: 0.6;
+        }
+
+        .privacy-note {
+            font-size: 0.7rem;
+            color: var(--text);
+            opacity: 0.6;
+            margin-top: 16px;
+        }
+
+        .privacy-note i {
+            color: var(--sage);
+            margin-right: 4px;
+        }
+
+        /* Success State */
+        .success-slide {
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--sage), #6b7a63);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .success-icon i {
+            font-size: 48px;
+            color: white;
+        }
+
+        .success-slide .question-text {
+            color: var(--sage);
+        }
+
+        .success-message {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 32px;
+        }
+
+        .home-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 16px 32px;
+            background: var(--terracotta);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+        }
+
+        .home-link:hover {
+            background: var(--sandstone);
+            transform: translateY(-2px);
+        }
+
+        /* Hide slides by default */
+        .question-slide:not(.active) {
+            display: none;
+        }
+
+        .question-slide.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="survey-container">
+        <header class="survey-header">
+            <a href="index.html" class="survey-logo">Dr. Richa Arora</a>
+        </header>
+
+        <div class="progress-container">
+            <div class="progress-text">
+                <span>Health Assessment</span>
+                <span id="progress-label">1 of 10</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 10%"></div>
+            </div>
+        </div>
+
+        <div class="questions-wrapper">
+            <!-- Question 1: Energy Levels -->
+            <div class="question-slide active" data-question="1">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-sun-03"></i>
+                </div>
+                <div class="question-number">Question 1</div>
+                <h2 class="question-text">How would you describe your energy levels throughout the day?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="high">
+                        <div class="option-icon"><i class="hgi-stroke hgi-flash"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Consistently High</div>
+                            <div class="option-desc">I feel energized most of the day</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="moderate">
+                        <div class="option-icon"><i class="hgi-stroke hgi-activity-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Moderate with Dips</div>
+                            <div class="option-desc">Energy fluctuates during the day</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="low">
+                        <div class="option-icon"><i class="hgi-stroke hgi-battery-low"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Generally Low</div>
+                            <div class="option-desc">Often feel tired or fatigued</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="exhausted">
+                        <div class="option-icon"><i class="hgi-stroke hgi-sleeping"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Chronically Exhausted</div>
+                            <div class="option-desc">Struggle to get through each day</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 2: Sleep Quality -->
+            <div class="question-slide" data-question="2">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-moon-02"></i>
+                </div>
+                <div class="question-number">Question 2</div>
+                <h2 class="question-text">How would you rate your sleep quality?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="excellent">
+                        <div class="option-icon"><i class="hgi-stroke hgi-star"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Excellent</div>
+                            <div class="option-desc">Wake up refreshed and well-rested</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="good">
+                        <div class="option-icon"><i class="hgi-stroke hgi-thumbs-up"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Good</div>
+                            <div class="option-desc">Generally sleep well with occasional issues</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="poor">
+                        <div class="option-icon"><i class="hgi-stroke hgi-sad-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Poor</div>
+                            <div class="option-desc">Difficulty falling or staying asleep</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="insomnia">
+                        <div class="option-icon"><i class="hgi-stroke hgi-alert-02"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Chronic Issues</div>
+                            <div class="option-desc">Insomnia or severely disrupted sleep</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 3: Digestive Health -->
+            <div class="question-slide" data-question="3">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-apple-01"></i>
+                </div>
+                <div class="question-number">Question 3</div>
+                <h2 class="question-text">How is your digestive health?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="perfect">
+                        <div class="option-icon"><i class="hgi-stroke hgi-tick-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Perfect</div>
+                            <div class="option-desc">No digestive issues at all</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="occasional">
+                        <div class="option-icon"><i class="hgi-stroke hgi-notification-03"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Occasional Issues</div>
+                            <div class="option-desc">Sometimes experience bloating or discomfort</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="frequent">
+                        <div class="option-icon"><i class="hgi-stroke hgi-alert-circle"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Frequent Problems</div>
+                            <div class="option-desc">Regular bloating, gas, or irregularity</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="chronic">
+                        <div class="option-icon"><i class="hgi-stroke hgi-cancel-circle"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Chronic Condition</div>
+                            <div class="option-desc">IBS, acid reflux, or other diagnosed issues</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 4: Stress Levels -->
+            <div class="question-slide" data-question="4">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-meditation"></i>
+                </div>
+                <div class="question-number">Question 4</div>
+                <h2 class="question-text">How do you experience stress?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="managed">
+                        <div class="option-icon"><i class="hgi-stroke hgi-yoga-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Well Managed</div>
+                            <div class="option-desc">I have effective coping strategies</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="moderate">
+                        <div class="option-icon"><i class="hgi-stroke hgi-time-quarter-pass"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Moderate Stress</div>
+                            <div class="option-desc">Manageable but sometimes overwhelming</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="high">
+                        <div class="option-icon"><i class="hgi-stroke hgi-fire"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">High Stress</div>
+                            <div class="option-desc">Often feel anxious or overwhelmed</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="burnout">
+                        <div class="option-icon"><i class="hgi-stroke hgi-danger"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Burnout</div>
+                            <div class="option-desc">Constant stress affecting my health</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 5: Diet -->
+            <div class="question-slide" data-question="5">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-organic-food"></i>
+                </div>
+                <div class="question-number">Question 5</div>
+                <h2 class="question-text">How would you describe your current diet?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="whole-foods">
+                        <div class="option-icon"><i class="hgi-stroke hgi-leaf-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Whole Foods</div>
+                            <div class="option-desc">Mostly fresh, unprocessed foods</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="mixed">
+                        <div class="option-icon"><i class="hgi-stroke hgi-dish-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Mixed</div>
+                            <div class="option-desc">Combination of healthy and convenience foods</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="processed">
+                        <div class="option-icon"><i class="hgi-stroke hgi-pizza-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Mostly Processed</div>
+                            <div class="option-desc">Rely on packaged or fast foods</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="inconsistent">
+                        <div class="option-icon"><i class="hgi-stroke hgi-help"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Inconsistent</div>
+                            <div class="option-desc">No regular eating pattern</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 6: Exercise -->
+            <div class="question-slide" data-question="6">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-dumbbell-02"></i>
+                </div>
+                <div class="question-number">Question 6</div>
+                <h2 class="question-text">How often do you exercise or move your body?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="daily">
+                        <div class="option-icon"><i class="hgi-stroke hgi-running-shoes"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Daily</div>
+                            <div class="option-desc">Active every day or almost every day</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="regular">
+                        <div class="option-icon"><i class="hgi-stroke hgi-calendar-03"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">3-4 Times a Week</div>
+                            <div class="option-desc">Regular exercise routine</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="occasional">
+                        <div class="option-icon"><i class="hgi-stroke hgi-timer-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Occasional</div>
+                            <div class="option-desc">Once a week or less</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="sedentary">
+                        <div class="option-icon"><i class="hgi-stroke hgi-armchair"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Sedentary</div>
+                            <div class="option-desc">Rarely or never exercise</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 7: Hormonal Health -->
+            <div class="question-slide" data-question="7">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-dna"></i>
+                </div>
+                <div class="question-number">Question 7</div>
+                <h2 class="question-text">Do you experience any hormonal symptoms?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="none">
+                        <div class="option-icon"><i class="hgi-stroke hgi-tick-double-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">None</div>
+                            <div class="option-desc">No noticeable hormonal issues</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="mild">
+                        <div class="option-icon"><i class="hgi-stroke hgi-thermometer"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Mild Symptoms</div>
+                            <div class="option-desc">Occasional mood swings or minor issues</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="moderate">
+                        <div class="option-icon"><i class="hgi-stroke hgi-heartbeat"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Moderate</div>
+                            <div class="option-desc">Regular symptoms affecting daily life</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="severe">
+                        <div class="option-icon"><i class="hgi-stroke hgi-stethoscope-02"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Diagnosed Condition</div>
+                            <div class="option-desc">PCOD, thyroid, or other hormonal issues</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 8: Medications -->
+            <div class="question-slide" data-question="8">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-medicine-01"></i>
+                </div>
+                <div class="question-number">Question 8</div>
+                <h2 class="question-text">Are you currently on any medications?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="none">
+                        <div class="option-icon"><i class="hgi-stroke hgi-tick-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">None</div>
+                            <div class="option-desc">Not taking any medications</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="occasional">
+                        <div class="option-icon"><i class="hgi-stroke hgi-first-aid-kit"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Occasional</div>
+                            <div class="option-desc">Only when needed (painkillers, etc.)</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="regular">
+                        <div class="option-icon"><i class="hgi-stroke hgi-capsule"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Regular</div>
+                            <div class="option-desc">Daily medication for a condition</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="multiple">
+                        <div class="option-icon"><i class="hgi-stroke hgi-medicine-bottle-02"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Multiple</div>
+                            <div class="option-desc">Taking several medications daily</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 9: Health Goals -->
+            <div class="question-slide" data-question="9">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-target-02"></i>
+                </div>
+                <div class="question-number">Question 9</div>
+                <h2 class="question-text">What is your primary health goal?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="energy">
+                        <div class="option-icon"><i class="hgi-stroke hgi-flash"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">More Energy</div>
+                            <div class="option-desc">Feel vibrant and alive every day</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="weight">
+                        <div class="option-icon"><i class="hgi-stroke hgi-body-weight"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Weight Management</div>
+                            <div class="option-desc">Achieve and maintain healthy weight</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="reverse">
+                        <div class="option-icon"><i class="hgi-stroke hgi-heal"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Reverse a Condition</div>
+                            <div class="option-desc">Address a specific health issue naturally</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="prevent">
+                        <div class="option-icon"><i class="hgi-stroke hgi-shield-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Prevention</div>
+                            <div class="option-desc">Stay healthy and prevent future issues</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Question 10: Commitment -->
+            <div class="question-slide" data-question="10">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-lotus"></i>
+                </div>
+                <div class="question-number">Question 10</div>
+                <h2 class="question-text">How ready are you to commit to lifestyle changes?</h2>
+                <div class="options-grid">
+                    <button class="option-btn" data-value="fully">
+                        <div class="option-icon"><i class="hgi-stroke hgi-rocket-01"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Fully Committed</div>
+                            <div class="option-desc">Ready to transform my lifestyle completely</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="mostly">
+                        <div class="option-icon"><i class="hgi-stroke hgi-thumb-up"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Mostly Ready</div>
+                            <div class="option-desc">Willing to make significant changes</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="gradual">
+                        <div class="option-icon"><i class="hgi-stroke hgi-stairs-up"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Gradual Steps</div>
+                            <div class="option-desc">Prefer small, incremental changes</div>
+                        </div>
+                    </button>
+                    <button class="option-btn" data-value="exploring">
+                        <div class="option-icon"><i class="hgi-stroke hgi-compass"></i></div>
+                        <div class="option-content">
+                            <div class="option-title">Still Exploring</div>
+                            <div class="option-desc">Learning what options are available</div>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Email Capture -->
+            <div class="question-slide email-slide" data-question="email">
+                <div class="question-icon">
+                    <i class="hgi-stroke hgi-mail-01"></i>
+                </div>
+                <h2 class="question-text">Get Your Free Health Assessment</h2>
+                <p class="email-subtitle">Based on your responses, we'll prepare a personalized assessment with recommendations tailored to your health profile.</p>
+                <div class="email-input-wrap">
+                    <input type="email" class="email-input" id="email-input" placeholder="Enter your email" required>
+                </div>
+                <p class="privacy-note"><i class="hgi-stroke hgi-lock-01"></i> We respect your privacy. No spam, ever.</p>
+            </div>
+
+            <!-- Success -->
+            <div class="question-slide success-slide" data-question="success">
+                <div class="success-icon">
+                    <i class="hgi-stroke hgi-tick-01"></i>
+                </div>
+                <h2 class="question-text">You're All Set!</h2>
+                <p class="success-message">Thank you for completing the assessment. Dr. Richa will personally review your responses and send your personalized health insights within 24 hours.</p>
+                <a href="index.html" class="home-link">
+                    <i class="hgi-stroke hgi-home-01"></i>
+                    Back to Home
+                </a>
+            </div>
+        </div>
+
+        <div class="nav-buttons" id="nav-buttons">
+            <button class="nav-btn back" id="back-btn" style="display: none;">
+                <i class="hgi-stroke hgi-arrow-left-01"></i>
+            </button>
+            <button class="nav-btn next" id="next-btn" disabled>
+                Continue <i class="hgi-stroke hgi-arrow-right-01"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.question-slide');
+        const progressFill = document.getElementById('progress-fill');
+        const progressLabel = document.getElementById('progress-label');
+        const backBtn = document.getElementById('back-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const navButtons = document.getElementById('nav-buttons');
+        const emailInput = document.getElementById('email-input');
+
+        let currentQuestion = 1;
+        const totalQuestions = 10;
+        const answers = {};
+
+        function updateProgress() {
+            if (currentQuestion <= totalQuestions) {
+                const progress = (currentQuestion / totalQuestions) * 100;
+                progressFill.style.width = `${progress}%`;
+                progressLabel.textContent = `${currentQuestion} of ${totalQuestions}`;
+            } else {
+                progressFill.style.width = '100%';
+                progressLabel.textContent = 'Complete';
+            }
+        }
+
+        function showSlide(questionNum) {
+            slides.forEach(slide => {
+                slide.classList.remove('active', 'prev');
+                const slideQ = slide.dataset.question;
+                if (slideQ === String(questionNum) || slideQ === questionNum) {
+                    slide.classList.add('active');
+                } else if (parseInt(slideQ) < questionNum) {
+                    slide.classList.add('prev');
+                }
+            });
+
+            // Update buttons
+            backBtn.style.display = currentQuestion > 1 ? 'flex' : 'none';
+
+            if (questionNum === 'email') {
+                nextBtn.innerHTML = 'Get My Assessment <i class="hgi-stroke hgi-arrow-right-01"></i>';
+                nextBtn.disabled = !emailInput.value.includes('@');
+            } else if (questionNum === 'success') {
+                navButtons.style.display = 'none';
+            } else {
+                nextBtn.innerHTML = 'Continue <i class="hgi-stroke hgi-arrow-right-01"></i>';
+                nextBtn.disabled = !answers[questionNum];
+            }
+
+            updateProgress();
+        }
+
+        // Option selection
+        document.querySelectorAll('.option-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const slide = this.closest('.question-slide');
+                const questionNum = parseInt(slide.dataset.question);
+
+                // Remove selection from siblings
+                slide.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+
+                // Select this option
+                this.classList.add('selected');
+                answers[questionNum] = this.dataset.value;
+
+                // Enable next button
+                nextBtn.disabled = false;
+            });
+        });
+
+        // Email input validation
+        emailInput.addEventListener('input', function() {
+            nextBtn.disabled = !this.value.includes('@');
+        });
+
+        // Next button
+        nextBtn.addEventListener('click', function() {
+            if (currentQuestion < totalQuestions) {
+                currentQuestion++;
+                showSlide(currentQuestion);
+            } else if (currentQuestion === totalQuestions) {
+                showSlide('email');
+                currentQuestion = 'email';
+            } else if (currentQuestion === 'email') {
+                // Submit email
+                answers.email = emailInput.value;
+                console.log('Survey answers:', answers);
+                showSlide('success');
+                currentQuestion = 'success';
+            }
+        });
+
+        // Back button
+        backBtn.addEventListener('click', function() {
+            if (currentQuestion === 'email') {
+                currentQuestion = totalQuestions;
+            } else if (currentQuestion === 'success') {
+                currentQuestion = 'email';
+            } else if (currentQuestion > 1) {
+                currentQuestion--;
+            }
+            showSlide(currentQuestion);
+        });
+
+        // Initialize
+        showSlide(1);
+    </script>
+</body>
+</html>
