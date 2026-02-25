@@ -2493,33 +2493,63 @@
         window.addEventListener('scroll', updateParallax);
         updateParallax();
 
-        // Books carousel slider - infinite loop
+        // Books carousel slider - TRUE infinite loop
         const booksTrack = document.getElementById('books-track');
         const booksPrev = document.getElementById('books-prev');
         const booksNext = document.getElementById('books-next');
-        let booksSlide = 0;
-        const totalBooks = 9;
-        const booksVisible = 3;
-        const maxBooksSlide = Math.ceil(totalBooks / booksVisible) - 1; // 2
+        const bookCards = document.querySelectorAll('.book-card');
+        const totalBooks = bookCards.length;
 
-        function updateBooksSlider() {
-            booksTrack.style.transform = `translateX(-${booksSlide * (100 / booksVisible) * booksVisible}%)`;
+        // Clone books for infinite effect
+        bookCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            booksTrack.appendChild(clone);
+        });
+        // Clone again for backwards scroll
+        bookCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            booksTrack.insertBefore(clone, booksTrack.firstChild);
+        });
+
+        let booksPosition = totalBooks; // Start at first set of originals
+        const cardWidth = 232; // 200px book + 32px gap
+
+        function updateBooksPosition(animate = true) {
+            if (!animate) {
+                booksTrack.style.transition = 'none';
+            } else {
+                booksTrack.style.transition = 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+            }
+            booksTrack.style.transform = `translateX(-${booksPosition * cardWidth}px)`;
         }
 
+        // Initialize position
+        updateBooksPosition(false);
+
         booksNext.addEventListener('click', () => {
-            booksSlide++;
-            if (booksSlide > maxBooksSlide) {
-                booksSlide = 0;
+            booksPosition++;
+            updateBooksPosition();
+
+            // When reaching the cloned set, jump back seamlessly
+            if (booksPosition >= totalBooks * 2) {
+                setTimeout(() => {
+                    booksPosition = totalBooks;
+                    updateBooksPosition(false);
+                }, 500);
             }
-            updateBooksSlider();
         });
 
         booksPrev.addEventListener('click', () => {
-            booksSlide--;
-            if (booksSlide < 0) {
-                booksSlide = maxBooksSlide;
+            booksPosition--;
+            updateBooksPosition();
+
+            // When reaching the beginning clones, jump forward seamlessly
+            if (booksPosition < totalBooks) {
+                setTimeout(() => {
+                    booksPosition = totalBooks * 2 - 1;
+                    updateBooksPosition(false);
+                }, 500);
             }
-            updateBooksSlider();
         });
 
         // Survey Modal Logic
