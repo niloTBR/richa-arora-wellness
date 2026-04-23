@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/Icon.svg">
     <title>Health Assessment | Dr. Richa Arora</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,15 +11,15 @@
     <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
     <style>
         :root {
-            --peach: #E8B4A0;
-            --blush: #F5D5C8;
-            --cream: #FAF7F5;
-            --beige: #F0EBE6;
-            --sandstone: #C9A48A;
-            --terracotta: #B8856C;
-            --sage: #7D8B75;
+            --peach: #dcecdb;
+            --blush: #c5ddbf;
+            --cream: #fafcfa;
+            --beige: #eaf5e9;
+            --sandstone: #f6b5b5;
+            --terracotta: #4f6a58;
+            --sage: #4f6a58;
             --gold: #B8A067;
-            --dark: #2D2D2D;
+            --dark: #4f6a58;
             --text: #5A5A5A;
         }
 
@@ -130,7 +131,7 @@
         .question-icon {
             width: 72px;
             height: 72px;
-            background: white;
+            background: #fafcfa;
             border-radius: 20px;
             display: flex;
             align-items: center;
@@ -172,7 +173,7 @@
 
         .option-btn {
             padding: 18px 24px;
-            background: white;
+            background: #fafcfa;
             border: 2px solid transparent;
             border-radius: 16px;
             cursor: pointer;
@@ -192,7 +193,7 @@
 
         .option-btn.selected {
             border-color: var(--terracotta);
-            background: linear-gradient(135deg, rgba(232, 180, 160, 0.1), rgba(184, 133, 108, 0.1));
+            background: linear-gradient(135deg, rgba(220, 236, 219, 0.1), rgba(79, 106, 88, 0.1));
         }
 
         .option-icon {
@@ -216,7 +217,7 @@
         }
 
         .option-btn.selected .option-icon i {
-            color: white;
+            color: #fafcfa;
         }
 
         .option-content {
@@ -270,12 +271,12 @@
         }
 
         .nav-btn.back:hover {
-            background: rgba(232, 180, 160, 0.15);
+            background: rgba(220, 236, 219, 0.15);
         }
 
         .nav-btn.next {
             background: var(--terracotta);
-            color: white;
+            color: #fafcfa;
         }
 
         .nav-btn.next:hover {
@@ -316,7 +317,7 @@
             border-radius: 16px;
             font-size: 1rem;
             font-family: 'Inter', sans-serif;
-            background: white;
+            background: #fafcfa;
             transition: all 0.3s ease;
             text-align: center;
         }
@@ -324,7 +325,7 @@
         .email-input:focus {
             outline: none;
             border-color: var(--terracotta);
-            box-shadow: 0 0 0 4px rgba(184, 133, 108, 0.1);
+            box-shadow: 0 0 0 4px rgba(79, 106, 88, 0.1);
         }
 
         .email-input::placeholder {
@@ -374,7 +375,7 @@
 
         .success-icon i {
             font-size: 48px;
-            color: white;
+            color: #fafcfa;
         }
 
         .success-slide .question-text {
@@ -394,7 +395,7 @@
             gap: 8px;
             padding: 16px 32px;
             background: var(--terracotta);
-            color: white;
+            color: #fafcfa;
             text-decoration: none;
             border-radius: 50px;
             font-size: 0.65rem;

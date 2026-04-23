@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/Icon.svg">
+    <title>About | Dr. Richa Arora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Serif+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+    <style>
+        :root {
+            --peach: #dcecdb;
+            --blush: #c5ddbf;
+            --cream: #fafcfa;
+            --beige: #eaf5e9;
+            --sandstone: #f6b5b5;
+            --terracotta: #4f6a58;
+            --sage: #4f6a58;
+            --gold: #B8A067;
+            --dark: #4f6a58;
+            --text: #5A5A5A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1.8;
+            background-color: var(--cream);
+            font-size: 15px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--dark);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--sage) !important;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 252, 250, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 24px 0;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 16px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--terracotta);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--terracotta);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--terracotta);
+            color: #fafcfa;
+            text-decoration: none;
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--sandstone);
+            border-radius: 50px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--terracotta);
+            color: var(--terracotta);
+        }
+
+        .btn-outline::before {
+            background: rgba(220, 236, 219, 0.15);
+        }
+
+        /* About Hero */
+        .about-hero {
+            padding: 160px 0 100px;
+            background: var(--cream);
+        }
+
+        .about-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-hero-image {
+            aspect-ratio: 4/5;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-hero-content h2 {
+            font-size: 2.4rem;
+            margin-bottom: 28px;
+            line-height: 1.25;
+        }
+
+        .about-hero-content p {
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-hero-content .lead {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: var(--terracotta);
+            margin: 32px 0;
+            padding: 24px 0 24px 28px;
+            border-left: 3px solid var(--peach);
+            line-height: 1.6;
+        }
+
+        /* Journey Section */
+        .journey {
+            padding: 100px 0;
+            background: var(--beige);
+        }
+
+        .journey-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 64px;
+        }
+
+        .journey-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        .journey-header p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--peach);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-start;
+            padding-right: calc(50% + 40px);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-end;
+            padding-left: calc(50% + 40px);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: var(--terracotta);
+            border-radius: 50%;
+            border: 4px solid var(--cream);
+        }
+
+        .timeline-content {
+            background: var(--cream);
+            padding: 32px;
+            border-radius: 20px;
+            max-width: 380px;
+        }
+
+        .timeline-year {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--terracotta);
+            margin-bottom: 12px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+        }
+
+        .timeline-content p {
+            font-size: 0.8rem;
+            line-height: 1.7;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .philosophy-card {
+            background: var(--beige);
+            padding: 48px 36px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .philosophy-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            font-size: 32px;
+            color: var(--terracotta);
+        }
+
+        .philosophy-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .philosophy-card p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        /* Credentials Section */
+        .credentials {
+            padding: 100px 0;
+            background: var(--beige);
+        }
+
+        .credentials-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .credentials-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .credential-card {
+            background: var(--cream);
+            padding: 36px;
+            border-radius: 16px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .credential-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--blush);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 24px;
+            color: var(--terracotta);
+        }
+
+        .credential-content h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .credential-content p {
+            font-size: 0.8rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: var(--sandstone);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            color: var(--terracotta);
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 0.95rem;
+            color: var(--dark);
+            opacity: 0.75;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .cta .btn {
+            background: var(--terracotta);
+            color: var(--sandstone);
+        }
+
+        .cta .btn::before {
+            background: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #fafcfa;
+            padding: 72px 0 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 56px;
+        }
+
+        .footer-brand .logo {
+            color: #fafcfa;
+            display: block;
+            margin-bottom: 16px;
+            font-size: 1.4rem;
+        }
+
+        .footer-brand p {
+            color: rgba(250, 252, 250,0.45);
+            font-size: 0.75rem;
+            max-width: 260px;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            color: rgba(250, 252, 250,0.35);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: rgba(250, 252, 250,0.6);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--peach);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(250, 252, 250,0.08);
+            color: rgba(250, 252, 250,0.25);
+            font-size: 0.65rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .about-hero-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .about-hero-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 60px;
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="assets/Logo.svg" alt="Dr. Richa Arora" style="height:64px;width:auto;display:block;"></a>
+            <ul class="nav-links">
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="approach.html">Approach</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="btn">Book Consultation</a>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <div class="container">
+            <div class="about-hero-grid">
+                <div class="about-hero-image">
+                    <img src="Photos/Richa.png" alt="Dr. Richa Arora">
+                </div>
+                <div class="about-hero-content">
+                    <p class="eyebrow">My Story</p>
+                    <h2>From Doctor to Healer: A Personal Transformation</h2>
+                    <p>After years of practicing conventional medicine, I witnessed a profound truth: treating symptoms alone rarely leads to lasting wellness. Patients would return, their conditions managed but never truly resolved.</p>
+                    <p class="lead">"True healing happens when we address the root cause, not just the symptoms that manifest on the surface."</p>
+                    <p>This realization sparked a deep personal journey into the ancient wisdom of Ayurveda, combined with modern functional medicine approaches. I studied with masters across India, learning the subtle art of reading the body's signals and understanding the intricate web of factors that create or destroy health.</p>
+                    <p>Today, I blend the precision of modern diagnostics with the holistic wisdom of traditional healing systems, helping individuals not just recover from illness, but thrive in ways they never imagined possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="journey">
+        <div class="container">
+            <div class="journey-header">
+                <p class="eyebrow">The Journey</p>
+                <h2>Milestones That Shaped My Practice</h2>
+                <p>Every step of my journey has contributed to the integrative approach I use today to help clients achieve lasting wellness.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2008</div>
+                        <h3>Medical School Graduate</h3>
+                        <p>Completed MBBS with honors, beginning my journey in conventional medicine with a deep curiosity about human health.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2012</div>
+                        <h3>Clinical Practice Begins</h3>
+                        <p>Started practicing as a physician, but began questioning why chronic conditions kept recurring despite treatment.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2015</div>
+                        <h3>Ayurveda Training</h3>
+                        <p>Embarked on intensive study of Ayurvedic medicine in Kerala, learning from traditional practitioners and masters.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2018</div>
+                        <h3>Integrative Practice Launch</h3>
+                        <p>Founded my integrative wellness practice, combining the best of modern medicine with ancient healing wisdom.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">2024</div>
+                        <h3>500+ Lives Transformed</h3>
+                        <p>Helped over 500 individuals achieve medicine-free living through personalized root-cause healing protocols.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 64px;">
+                <p class="eyebrow">My Philosophy</p>
+                <h2 style="font-size: 2.2rem;">The Pillars of My Approach</h2>
+            </div>
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="hgi-stroke hgi-search-01"></i>
+                    </div>
+                    <h3>Root Cause Focus</h3>
+                    <p>Rather than masking symptoms with medications, I dig deep to understand the underlying imbalances causing disease. This approach leads to lasting transformation rather than temporary relief.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="hgi-stroke hgi-user-circle"></i>
+                    </div>
+                    <h3>Personalized Care</h3>
+                    <p>No two bodies are alike. Your unique constitution, lifestyle, and circumstances require a tailored approach. I create protocols designed specifically for your body and life.</p>
+                </div>
+                <div class="philosophy-card">
+                    <div class="philosophy-icon">
+                        <i class="hgi-stroke hgi-leaf-02"></i>
+                    </div>
+                    <h3>Natural First</h3>
+                    <p>The body has an innate intelligence to heal itself when given the right conditions. I prioritize natural interventions that work with your body, not against it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="credentials">
+        <div class="container">
+            <div class="credentials-header">
+                <p class="eyebrow">Credentials</p>
+                <h2>Training & Certifications</h2>
+            </div>
+            <div class="credentials-grid">
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="hgi-stroke hgi-mortarboard-02"></i>
+                    </div>
+                    <div class="credential-content">
+                        <h4>MBBS, Medicine</h4>
+                        <p>Graduate of a leading medical institution with specialization in internal medicine and diagnostics.</p>
+                    </div>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="hgi-stroke hgi-leaf-02"></i>
+                    </div>
+                    <div class="credential-content">
+                        <h4>Certified Ayurvedic Practitioner</h4>
+                        <p>Trained in traditional Ayurvedic medicine under masters in Kerala, India.</p>
+                    </div>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="hgi-stroke hgi-chart-line-data-02"></i>
+                    </div>
+                    <div class="credential-content">
+                        <h4>Functional Medicine</h4>
+                        <p>Advanced training in functional medicine approaches for chronic disease reversal.</p>
+                    </div>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">
+                        <i class="hgi-stroke hgi-yoga-01"></i>
+                    </div>
+                    <div class="credential-content">
+                        <h4>Yoga & Pranayama Instructor</h4>
+                        <p>Certified instructor in therapeutic yoga and breathing practices for health optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Begin Your Healing Journey</h2>
+            <p>Ready to discover what's possible when you address the root cause of your health concerns?</p>
+            <a href="contact.html" class="btn">Schedule a Consultation</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo"><img src="assets/Icon.svg" alt="Dr. Richa Arora" style="height:40px;width:auto;display:block;"></a>
+                    <p>Integrative wellness practitioner helping individuals live medicine-free through root-cause healing.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Navigate</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="approach.html">Approach</a></li>
+                            <li><a href="services.html">Services</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:hello@richarora.co.in">hello@richarora.co.in</a></li>
+                            <li><a href="https://instagram.com/dr.richa_arora">Instagram</a></li>
+                            <li><a href="#">YouTube</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dr. Richa Arora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

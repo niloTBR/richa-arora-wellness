@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="assets/Icon.svg">
+    <title>Services & Packages | Dr. Richa Arora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Serif+Display&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css" />
+    <style>
+        :root {
+            --peach: #dcecdb;
+            --blush: #c5ddbf;
+            --cream: #fafcfa;
+            --beige: #eaf5e9;
+            --sandstone: #f6b5b5;
+            --terracotta: #4f6a58;
+            --sage: #4f6a58;
+            --gold: #B8A067;
+            --dark: #4f6a58;
+            --text: #5A5A5A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            color: var(--text);
+            line-height: 1.8;
+            background-color: var(--cream);
+            font-size: 15px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'DM Serif Display', serif;
+            color: var(--dark);
+            font-weight: 400;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .eyebrow {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--sage) !important;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(250, 252, 250, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 24px 0;
+            transition: all 0.4s ease;
+        }
+
+        nav.scrolled {
+            padding: 16px 0;
+            box-shadow: 0 4px 30px rgba(0,0,0,0.03);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--terracotta);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.7rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--terracotta);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--terracotta);
+            color: #fafcfa;
+            text-decoration: none;
+            font-size: 0.6rem;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--sandstone);
+            border-radius: 50px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--terracotta);
+            color: var(--terracotta);
+        }
+
+        .btn-outline::before {
+            background: rgba(220, 236, 219, 0.15);
+        }
+
+        .btn-large {
+            padding: 18px 40px;
+            font-size: 0.65rem;
+        }
+
+        /* Services Hero */
+        .services-intro {
+            padding: 160px 0 80px;
+            background: var(--beige);
+        }
+
+        .services-intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .services-intro-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .services-intro-content > p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .services-intro-cta {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .services-intro-visual {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 24px 60px rgba(79, 106, 88, 0.18);
+        }
+
+        .services-intro-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .services-intro-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 55%, rgba(79, 106, 88, 0.22) 100%);
+            pointer-events: none;
+        }
+
+        @media (max-width: 900px) {
+            .services-intro-grid { grid-template-columns: 1fr; gap: 40px; }
+            .services-intro-content h1 { font-size: 2.2rem; }
+        }
+
+        /* Individual Services */
+        .service-detail {
+            padding: 80px 0;
+        }
+
+        .service-detail:nth-child(even) {
+            background: var(--beige);
+        }
+
+        .service-detail:nth-child(odd) {
+            background: var(--cream);
+        }
+
+        .service-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .service-detail:nth-child(even) .service-detail-grid {
+            direction: rtl;
+        }
+
+        .service-detail:nth-child(even) .service-detail-grid > * {
+            direction: ltr;
+        }
+
+        .service-detail-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .service-detail-content > p {
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+        }
+
+        .service-features li i {
+            color: var(--sage);
+            font-size: 1rem;
+            margin-top: 2px;
+        }
+
+        .service-detail-image {
+            aspect-ratio: 4/3;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .service-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Packages Section */
+        .packages {
+            padding: 100px 0;
+            background: var(--beige);
+        }
+
+        .packages-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .packages-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .packages-header p {
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .package-card {
+            background: var(--cream);
+            border-radius: 24px;
+            padding: 48px 36px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+
+        .package-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 60px rgba(0,0,0,0.1);
+        }
+
+        .package-card.featured {
+            border-color: var(--terracotta);
+            transform: scale(1.03);
+        }
+
+        .package-card.featured:hover {
+            transform: scale(1.03) translateY(-8px);
+        }
+
+        .package-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--terracotta);
+            color: #fafcfa;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.55rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 500;
+        }
+
+        .package-header {
+            text-align: center;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--peach);
+            margin-bottom: 28px;
+        }
+
+        .package-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 8px;
+        }
+
+        .package-tagline {
+            font-size: 0.75rem;
+            color: var(--text);
+            margin-bottom: 20px;
+        }
+
+        .package-price {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem;
+            color: var(--terracotta);
+        }
+
+        .package-price span {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text);
+        }
+
+        .package-duration {
+            font-size: 0.7rem;
+            color: var(--text);
+            margin-top: 4px;
+        }
+
+        .package-features {
+            list-style: none;
+            flex-grow: 1;
+            margin-bottom: 32px;
+        }
+
+        .package-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .package-features li i {
+            color: var(--sage);
+            font-size: 0.9rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .package-card .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Bundles Section */
+        .bundles {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+
+        .bundles-header {
+            text-align: center;
+            margin-bottom: 64px;
+        }
+
+        .bundles-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .bundles-header p {
+            font-size: 0.95rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .bundle-card {
+            background: var(--beige);
+            border-radius: 24px;
+            padding: 56px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 56px;
+            margin-bottom: 32px;
+            align-items: center;
+        }
+
+        .bundle-content h3 {
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+
+        .bundle-content > p {
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+            line-height: 1.8;
+        }
+
+        .bundle-includes {
+            list-style: none;
+            margin-bottom: 32px;
+        }
+
+        .bundle-includes li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+        }
+
+        .bundle-includes li i {
+            color: var(--terracotta);
+            font-size: 1rem;
+        }
+
+        .bundle-pricing {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .bundle-original-price {
+            font-size: 1rem;
+            color: var(--text);
+            text-decoration: line-through;
+            margin-bottom: 8px;
+        }
+
+        .bundle-price {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            color: var(--terracotta);
+            margin-bottom: 8px;
+        }
+
+        .bundle-savings {
+            display: inline-block;
+            background: var(--sage);
+            color: #fafcfa;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }
+
+        .bundle-pricing .btn {
+            width: 100%;
+        }
+
+        /* Add-ons */
+        .addons {
+            padding: 80px 0;
+            background: var(--beige);
+        }
+
+        .addons-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .addons-header h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .addon-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .addon-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .addon-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--blush);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: var(--terracotta);
+        }
+
+        .addon-card h4 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .addon-card p {
+            font-size: 0.75rem;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .addon-price {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: var(--terracotta);
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            background: var(--sandstone);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            color: var(--terracotta);
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 0.95rem;
+            color: var(--dark);
+            opacity: 0.75;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+
+        .cta .btn {
+            background: var(--terracotta);
+            color: var(--sandstone);
+        }
+
+        .cta .btn::before {
+            background: var(--dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: #fafcfa;
+            padding: 72px 0 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 56px;
+        }
+
+        .footer-brand .logo {
+            color: #fafcfa;
+            display: block;
+            margin-bottom: 16px;
+            font-size: 1.4rem;
+        }
+
+        .footer-brand p {
+            color: rgba(250, 252, 250,0.45);
+            font-size: 0.75rem;
+            max-width: 260px;
+            line-height: 1.7;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 80px;
+        }
+
+        .footer-col h4 {
+            font-size: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            font-weight: 500;
+            color: rgba(250, 252, 250,0.35);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col a {
+            color: rgba(250, 252, 250,0.6);
+            text-decoration: none;
+            font-size: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-col a:hover {
+            color: var(--peach);
+        }
+
+        .footer-bottom {
+            padding-top: 32px;
+            border-top: 1px solid rgba(250, 252, 250,0.08);
+            color: rgba(250, 252, 250,0.25);
+            font-size: 0.65rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .packages-grid {
+                grid-template-columns: 1fr;
+                max-width: 450px;
+                margin: 0 auto;
+            }
+
+            .package-card.featured {
+                transform: none;
+            }
+
+            .addons-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 968px) {
+            .service-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .service-detail:nth-child(even) .service-detail-grid {
+                direction: ltr;
+            }
+
+            .bundle-card {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .container {
+                padding: 0 24px;
+            }
+
+            .addons-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bundle-card {
+                padding: 36px 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo"><img src="assets/Logo.svg" alt="Dr. Richa Arora" style="height:64px;width:auto;display:block;"></a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="approach.html">Approach</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="contact.html" class="btn">Book Consultation</a>
+        </div>
+    </nav>
+
+    <section class="services-intro">
+        <div class="container">
+            <div class="services-intro-grid">
+                <div class="services-intro-content">
+                    <p class="eyebrow">Services</p>
+                    <h1>Healing Programs & Packages</h1>
+                    <p>Every healing journey is unique. Whether you're looking to reverse a chronic condition, optimize your health, or achieve a specific wellness goal, I offer tailored programs that combine ancient wisdom with modern science.</p>
+                    <div class="services-intro-cta">
+                        <a href="#packages" class="btn">Explore Packages</a>
+                        <a href="contact.html" class="btn btn-outline">Book Consultation</a>
+                    </div>
+                </div>
+                <div class="services-intro-visual">
+                    <img src="Photos/Heal.jpg" alt="Healing programs at Dr. Richa Arora">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Services Detail -->
+    <section class="service-detail">
+        <div class="container">
+            <div class="service-detail-grid">
+                <div class="service-detail-content">
+                    <p class="eyebrow">Core Service</p>
+                    <h3>Root Cause Analysis</h3>
+                    <p>A comprehensive deep-dive into your health history, current symptoms, and lifestyle factors to uncover the underlying imbalances causing your health concerns. This forms the foundation of all our healing work together.</p>
+                    <ul class="service-features">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> 90-minute in-depth consultation</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Complete health history review</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Prakriti (constitution) assessment</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Lifestyle and nutrition analysis</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Personalized findings report</li>
+                    </ul>
+                    <a href="checkout.html?service=root-cause" class="btn">Book Analysis - $199</a>
+                </div>
+                <div class="service-detail-image">
+                    <img src="Photos/Focus.jpg" alt="Root Cause Analysis">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail">
+        <div class="container">
+            <div class="service-detail-grid">
+                <div class="service-detail-content">
+                    <p class="eyebrow">Signature Program</p>
+                    <h3>Chronic Disease Reversal</h3>
+                    <p>A structured protocol designed to address and reverse chronic health conditions through targeted interventions, dietary modifications, and lifestyle changes rooted in functional medicine and Ayurvedic principles.</p>
+                    <ul class="service-features">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Conditions addressed: Diabetes, Thyroid, PCOS, Autoimmune</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Customized reversal protocol</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Weekly check-ins and adjustments</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Supplement and herb recommendations</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Progress tracking and lab reviews</li>
+                    </ul>
+                    <a href="checkout.html?service=chronic-reversal" class="btn">Learn More</a>
+                </div>
+                <div class="service-detail-image">
+                    <img src="Photos/Heal.jpg" alt="Chronic Disease Reversal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="service-detail">
+        <div class="container">
+            <div class="service-detail-grid">
+                <div class="service-detail-content">
+                    <p class="eyebrow">Nutritional Healing</p>
+                    <h3>Satvik Diet Planning</h3>
+                    <p>Personalized nutrition plans based on Ayurvedic principles and your unique constitution. Learn to nourish your body with foods that heal, energize, and bring balance to your system.</p>
+                    <ul class="service-features">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Dosha-specific meal plans</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Seasonal eating guidelines</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Recipe collection (50+ recipes)</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Shopping lists and meal prep guides</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> 30-day implementation support</li>
+                    </ul>
+                    <a href="checkout.html?service=diet-planning" class="btn">Get Started - $149</a>
+                </div>
+                <div class="service-detail-image">
+                    <img src="Photos/Nourish.jpg" alt="Satvik Diet Planning">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages">
+        <div class="container">
+            <div class="packages-header">
+                <p class="eyebrow">Choose Your Path</p>
+                <h2>Transformation Packages</h2>
+                <p>Comprehensive programs designed to guide you through your complete healing journey with ongoing support.</p>
+            </div>
+            <div class="packages-grid">
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Foundation</h3>
+                        <p class="package-tagline">Perfect for getting started</p>
+                        <div class="package-price">$499</div>
+                        <p class="package-duration">4-week program</p>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Initial root cause analysis</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Personalized wellness protocol</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> 2 consultations per month</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Email support (48hr response)</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Basic diet guidelines</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Monthly progress review</li>
+                    </ul>
+                    <a href="checkout.html?package=foundation" class="btn btn-outline">Select Package</a>
+                </div>
+
+                <div class="package-card featured">
+                    <div class="package-badge">Most Popular</div>
+                    <div class="package-header">
+                        <h3 class="package-name">Transformation</h3>
+                        <p class="package-tagline">Complete healing journey</p>
+                        <div class="package-price">$899</div>
+                        <p class="package-duration">8-week program</p>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Everything in Foundation</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Weekly 1:1 consultations</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> WhatsApp support (24hr response)</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Full Satvik diet plan</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Yoga & pranayama protocols</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Lab test interpretations</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Supplement guidance</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Access to all digital courses</li>
+                    </ul>
+                    <a href="checkout.html?package=transformation" class="btn">Select Package</a>
+                </div>
+
+                <div class="package-card">
+                    <div class="package-header">
+                        <h3 class="package-name">Elite</h3>
+                        <p class="package-tagline">Premium concierge care</p>
+                        <div class="package-price">$1,499</div>
+                        <p class="package-duration">12-week program</p>
+                    </div>
+                    <ul class="package-features">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Everything in Transformation</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Unlimited consultations</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Same-day WhatsApp support</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Family member inclusion (1)</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Quarterly in-person retreats</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Advanced genetic analysis</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Priority scheduling</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Personalized herb formulations</li>
+                    </ul>
+                    <a href="checkout.html?package=elite" class="btn btn-outline">Select Package</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bundles Section -->
+    <section class="bundles">
+        <div class="container">
+            <div class="bundles-header">
+                <p class="eyebrow">Special Offers</p>
+                <h2>Condition-Specific Bundles</h2>
+                <p>Targeted programs for specific health goals, combining multiple services at a special price.</p>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-content">
+                    <p class="eyebrow">Bundle</p>
+                    <h3>Diabetes Reversal Program</h3>
+                    <p>A comprehensive 6-month program specifically designed to reverse Type 2 diabetes through diet, lifestyle, and targeted protocols. Many participants see significant improvements within the first 90 days.</p>
+                    <ul class="bundle-includes">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Complete root cause analysis</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Diabetes-specific reversal protocol</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Weekly monitoring calls</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Blood sugar tracking guidance</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Low-glycemic meal plans</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Exercise recommendations</li>
+                    </ul>
+                </div>
+                <div class="bundle-pricing">
+                    <p class="bundle-original-price">Value: $4,500</p>
+                    <div class="bundle-price">$2,999</div>
+                    <span class="bundle-savings">Save 33%</span>
+                    <a href="checkout.html?bundle=diabetes" class="btn btn-large">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-content">
+                    <p class="eyebrow">Bundle</p>
+                    <h3>Hormonal Balance Reset</h3>
+                    <p>Specially designed for women dealing with PCOS, thyroid imbalances, or menopause symptoms. This 4-month intensive addresses hormonal issues at their root through natural interventions.</p>
+                    <ul class="bundle-includes">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Hormonal health assessment</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Customized balancing protocol</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Bi-weekly consultations</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Seed cycling guide</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Stress management techniques</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Cycle syncing nutrition plan</li>
+                    </ul>
+                </div>
+                <div class="bundle-pricing">
+                    <p class="bundle-original-price">Value: $2,800</p>
+                    <div class="bundle-price">$1,899</div>
+                    <span class="bundle-savings">Save 32%</span>
+                    <a href="checkout.html?bundle=hormonal" class="btn btn-large">Enroll Now</a>
+                </div>
+            </div>
+
+            <div class="bundle-card">
+                <div class="bundle-content">
+                    <p class="eyebrow">Bundle</p>
+                    <h3>Gut Health Restoration</h3>
+                    <p>A 3-month deep dive into healing your gut, addressing issues like IBS, bloating, food sensitivities, and digestive discomfort. Restore your digestive fire and rebuild your microbiome naturally.</p>
+                    <ul class="bundle-includes">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Gut health assessment</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Elimination diet protocol</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Probiotic recommendations</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Gut-healing recipes</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Weekly check-ins</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Food reintroduction guide</li>
+                    </ul>
+                </div>
+                <div class="bundle-pricing">
+                    <p class="bundle-original-price">Value: $1,800</p>
+                    <div class="bundle-price">$1,299</div>
+                    <span class="bundle-savings">Save 28%</span>
+                    <a href="checkout.html?bundle=gut" class="btn btn-large">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add-ons Section -->
+    <section class="addons">
+        <div class="container">
+            <div class="addons-header">
+                <p class="eyebrow">Enhance Your Journey</p>
+                <h2>Add-On Services</h2>
+            </div>
+            <div class="addons-grid">
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="hgi-stroke hgi-call"></i>
+                    </div>
+                    <h4>Extra Consultation</h4>
+                    <p>Additional 45-minute consultation session</p>
+                    <div class="addon-price">$89</div>
+                </div>
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="hgi-stroke hgi-flask"></i>
+                    </div>
+                    <h4>Lab Review</h4>
+                    <p>Comprehensive analysis of your lab results</p>
+                    <div class="addon-price">$75</div>
+                </div>
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="hgi-stroke hgi-mortar-pestle"></i>
+                    </div>
+                    <h4>Custom Herbs</h4>
+                    <p>Personalized herbal formulation</p>
+                    <div class="addon-price">$120</div>
+                </div>
+                <div class="addon-card">
+                    <div class="addon-icon">
+                        <i class="hgi-stroke hgi-family"></i>
+                    </div>
+                    <h4>Family Session</h4>
+                    <p>Include a family member in consultation</p>
+                    <div class="addon-price">$149</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Not Sure Which Program Is Right?</h2>
+            <p>Book a free 15-minute discovery call to discuss your health goals and find the perfect fit.</p>
+            <a href="contact.html" class="btn">Schedule Free Call</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo"><img src="assets/Icon.svg" alt="Dr. Richa Arora" style="height:40px;width:auto;display:block;"></a>
+                    <p>Integrative wellness practitioner helping individuals live medicine-free through root-cause healing.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Navigate</h4>
+                        <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="approach.html">Approach</a></li>
+                            <li><a href="services.html">Services</a></li>
+                <li><a href="workshops.html">Workshops</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Connect</h4>
+                        <ul>
+                            <li><a href="mailto:hello@richarora.co.in">hello@richarora.co.in</a></li>
+                            <li><a href="https://instagram.com/dr.richa_arora">Instagram</a></li>
+                            <li><a href="#">YouTube</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Dr. Richa Arora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
