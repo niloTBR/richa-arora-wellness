@@ -254,27 +254,26 @@
 
         .workshops-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 32px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
         .workshop-card {
             background: var(--beige);
-            border-radius: 24px;
+            border-radius: 20px;
             overflow: hidden;
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
 
         .workshop-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+            box-shadow: 0 20px 50px rgba(79, 106, 88, 0.14);
         }
 
         .workshop-card-image {
-            height: 100%;
-            min-height: 320px;
+            height: 220px;
             background-size: cover;
             background-position: center;
             position: relative;
@@ -282,23 +281,23 @@
 
         .workshop-date {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 16px;
+            left: 16px;
             background: #fafcfa;
-            padding: 16px 20px;
-            border-radius: 16px;
+            padding: 12px 16px;
+            border-radius: 12px;
             text-align: center;
         }
 
         .workshop-date-day {
             font-family: 'DM Serif Display', serif;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: var(--terracotta);
             line-height: 1;
         }
 
         .workshop-date-month {
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--text);
@@ -307,37 +306,39 @@
 
         .workshop-badge {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
+            top: 16px;
+            right: 16px;
             background: var(--terracotta);
-            color: #fafcfa;
-            padding: 8px 16px;
+            color: var(--sandstone);
+            padding: 6px 12px;
             border-radius: 50px;
-            font-size: 0.55rem;
+            font-size: 0.5rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 500;
         }
 
         .workshop-badge.waitlist {
-            background: var(--sage);
+            background: var(--sandstone);
+            color: var(--terracotta);
         }
 
         .workshop-card-content {
-            padding: 36px;
+            padding: 28px;
             display: flex;
             flex-direction: column;
+            flex: 1;
         }
 
         .workshop-card-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 12px;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
         }
 
         .workshop-card-content > p {
-            font-size: 0.85rem;
-            line-height: 1.7;
-            margin-bottom: 24px;
+            font-size: 0.8rem;
+            line-height: 1.65;
+            margin-bottom: 20px;
             flex-grow: 1;
         }
 
@@ -763,6 +764,32 @@
         </div>
     </section>
 
+    <section class="featured-retreat">
+        <div class="container">
+            <div class="retreat-card">
+                <div class="retreat-image" style="background-image: url('Photos/Regenerate.jpg')"></div>
+                <div class="retreat-content">
+                    <p class="eyebrow">Signature Experience</p>
+                    <h2>3-Day Detox & Renewal Retreat</h2>
+                    <p>An immersive wellness experience in the foothills of Rishikesh. Disconnect from the chaos and reconnect with your body's innate healing wisdom.</p>
+                    <ul class="retreat-features">
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Guided detoxification protocols</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Daily yoga and pranayama sessions</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Satvik meals prepared by Ayurvedic chefs</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> One-on-one wellness consultations</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Nature walks and meditation</li>
+                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Personalized take-home protocol</li>
+                    </ul>
+                    <div class="retreat-pricing">
+                        <div class="retreat-price">$599 <span>$799</span></div>
+                        <a href="contact.html?workshop=detox-retreat" class="btn">Reserve Your Spot</a>
+                    </div>
+                    <p style="font-size: 0.75rem; margin-top: 16px; opacity: 0.7;">June 8-10, 2024 | Rishikesh | 10 spots only</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="upcoming" id="upcoming">
         <div class="container">
             <div class="upcoming-header">
@@ -902,32 +929,6 @@
         </div>
     </section>
 
-    <section class="featured-retreat">
-        <div class="container">
-            <div class="retreat-card">
-                <div class="retreat-image" style="background-image: url('Photos/Regenerate.jpg')"></div>
-                <div class="retreat-content">
-                    <p class="eyebrow">Signature Experience</p>
-                    <h2>3-Day Detox & Renewal Retreat</h2>
-                    <p>An immersive wellness experience in the foothills of Rishikesh. Disconnect from the chaos and reconnect with your body's innate healing wisdom.</p>
-                    <ul class="retreat-features">
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Guided detoxification protocols</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Daily yoga and pranayama sessions</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Satvik meals prepared by Ayurvedic chefs</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> One-on-one wellness consultations</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Nature walks and meditation</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Personalized take-home protocol</li>
-                    </ul>
-                    <div class="retreat-pricing">
-                        <div class="retreat-price">$599 <span>$799</span></div>
-                        <a href="contact.html?workshop=detox-retreat" class="btn">Reserve Your Spot</a>
-                    </div>
-                    <p style="font-size: 0.75rem; margin-top: 16px; opacity: 0.7;">June 8-10, 2024 | Rishikesh | 10 spots only</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="past-workshops">
         <div class="container">
             <div class="past-header">
@@ -1009,7 +1010,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Dr. Richa Arora. All rights reserved.</p>
+                <p>&copy; 2026 Dr. Richa Arora. All rights reserved.</p>
             </div>
         </div>
     </footer>
