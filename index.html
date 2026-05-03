@@ -2260,12 +2260,19 @@
                     <p class="survey-privacy"><i class="hgi-stroke hgi-lock-01"></i> No spam, ever.</p>
                 </div>
 
-                <!-- Success -->
-                <div class="survey-slide" data-q="success">
-                    <div class="survey-success-icon"><i class="hgi-stroke hgi-tick-01"></i></div>
-                    <h3 class="survey-question">You're All Set!</h3>
-                    <p class="survey-subtitle">Dr. Richa will send your personalized assessment within 24 hours.</p>
-                    <button class="survey-done" id="survey-done">Done</button>
+                <!-- Result Card -->
+                <div class="survey-slide" data-q="result">
+                    <div class="result-icon-wrap">
+                        <i class="hgi-stroke hgi-dna" id="result-icon-i"></i>
+                    </div>
+                    <p class="survey-q-num">Your Health Profile</p>
+                    <h3 class="survey-question" id="result-name">Discovering your profile...</h3>
+                    <p class="result-tagline" id="result-tagline"></p>
+                    <p class="survey-subtitle result-desc" id="result-desc"></p>
+                    <div class="result-focus-list" id="result-focus"></div>
+                    <a href="contact.html" class="survey-start-btn result-cta-btn" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:12px;">Book a Free Consultation <i class="hgi-stroke hgi-arrow-right-01"></i></a>
+                    <p class="survey-privacy result-sent" id="result-sent" style="display:none;"><i class="hgi-stroke hgi-mail-01"></i> Results sent to your inbox.</p>
+                    <button class="survey-done" id="survey-done">Close</button>
                 </div>
             </div>
         </div>
@@ -2645,6 +2652,49 @@
         .survey-done:hover {
             background: #6b7a63;
         }
+
+        /* Result Card */
+        @keyframes scaleIn {
+            from { transform: scale(0.7); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+        .result-icon-wrap {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--sage), #6b7a63);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 16px auto 20px;
+            animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .result-icon-wrap i { font-size: 36px; color: #fafcfa; }
+        .result-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-style: italic;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .result-desc { margin-bottom: 20px; font-size: 0.82rem; }
+        .result-focus-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+        .result-focus-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            background: var(--beige);
+            border-radius: 10px;
+            font-size: 0.82rem;
+            color: var(--dark);
+            font-weight: 500;
+            text-align: left;
+        }
+        .result-focus-item i { color: var(--terracotta); font-size: 1rem; flex-shrink: 0; }
+        .result-sent { display: flex !important; align-items: center; gap: 6px; justify-content: center; margin-top: 8px; }
     </style>
 
     <script>
@@ -2844,6 +2894,100 @@
         const surveyAnswers = {};
         const totalQuestions = 10;
 
+        // Health profile definitions
+        const PROFILES = {
+            hormonal: {
+                name: 'The Hormonal Rebuilder',
+                tagline: 'Your body is asking for balance, not more band-aids.',
+                desc: 'Your answers point to hormonal imbalance as the root cause. Whether it's your cycle, your skin, your mood, or your energy — the solution lies in addressing what's disrupting your internal chemistry, not managing symptoms one by one.',
+                icon: 'hgi-dna',
+                focus: ['Hormonal mapping & Ayurvedic constitution', 'Nutrition for cycle syncing', 'Detox pathways & liver support', 'Reducing hormonal triggers naturally']
+            },
+            metabolic: {
+                name: 'The Metabolic Transformer',
+                tagline: 'Your metabolism isn't broken. It's waiting for the right signals.',
+                desc: 'Your profile shows classic signs of metabolic imbalance — the kind that builds quietly over years of the wrong diet, stress, and overmedication. The good news: metabolism responds powerfully to the right protocol.',
+                icon: 'hgi-heartbeat',
+                focus: ['Metabolic reset through food timing', 'Blood sugar & cholesterol naturally', 'Reducing dependence on medication', 'Sustainable weight & energy balance']
+            },
+            gut: {
+                name: 'The Gut Healer',
+                tagline: 'All healing begins in the gut. Yours is ready.',
+                desc: 'Your digestive symptoms are signals, not inconveniences. Bloating, acidity, and irregular digestion are your gut's way of asking for help. Heal the gut and you'll be amazed at how much else resolves on its own.',
+                icon: 'hgi-organic-food',
+                focus: ['Gut microbiome restoration', 'Anti-inflammatory nutrition plan', 'Identifying food sensitivities', 'Naturopathic digestive healing']
+            },
+            vitality: {
+                name: 'The Vitality Seeker',
+                tagline: 'Exhaustion is not your baseline. Let's find your energy.',
+                desc: 'Chronic fatigue, poor sleep, and low energy are not just lifestyle problems. They are signs that your body's recovery systems are overwhelmed. A targeted protocol can bring your vitality back, sustainably.',
+                icon: 'hgi-flash',
+                focus: ['Circadian rhythm reset', 'Adrenal & cortisol support', 'Sleep architecture repair', 'Yoga & movement for energy restoration']
+            },
+            explorer: {
+                name: 'The Wellness Explorer',
+                tagline: 'You're asking the right questions. That's where healing begins.',
+                desc: 'You're at the beginning of your wellness journey, and that's a powerful place to be. You haven't been conditioned by years of failed approaches. Together, we can build the right foundation from the very start.',
+                icon: 'hgi-compass',
+                focus: ['Foundational health assessment', 'Understanding your body's signals', 'Building sustainable daily habits', 'Preventive naturopathic care']
+            }
+        };
+
+        function computeProfile(a) {
+            const s = { hormonal: 0, metabolic: 0, gut: 0, vitality: 0, explorer: 0 };
+            if (a[1] === 'hormonal')   s.hormonal  += 5;
+            else if (a[1] === 'metabolic') s.metabolic += 5;
+            else if (a[1] === 'digestive') s.gut       += 5;
+            else if (a[1] === 'fatigue')   s.vitality  += 5;
+            if (a[2] === 'late-groggy')       { s.vitality += 2; s.hormonal += 1; }
+            else if (a[2] === 'irregular')      s.vitality += 2;
+            else if (a[2] === 'early-energized') s.metabolic += 1;
+            if (a[3] === 'bloating')  { s.gut += 3; s.hormonal += 1; }
+            else if (a[3] === 'irregular') s.gut += 3;
+            else if (a[3] === 'acidity')   s.gut += 3;
+            else if (a[3] === 'none')      s.explorer += 1;
+            if (a[4] === 'emotional')  { s.hormonal += 2; s.vitality += 1; }
+            else if (a[4] === 'busy')       s.metabolic += 2;
+            else if (a[4] === 'restrictive') s.metabolic += 2;
+            else if (a[4] === 'mindful')    s.explorer += 1;
+            if (a[5] === 'cycle')     s.hormonal += 3;
+            else if (a[5] === 'skin-hair') s.hormonal += 3;
+            else if (a[5] === 'mood')      { s.hormonal += 2; s.vitality += 1; }
+            else if (a[5] === 'none')      s.explorer += 1;
+            if (a[6] === 'insomnia')  { s.vitality += 3; s.hormonal += 1; }
+            else if (a[6] === 'disturbed') { s.vitality += 2; s.hormonal += 1; }
+            else if (a[6] === 'late')      s.vitality += 2;
+            else if (a[6] === 'solid')     s.explorer += 1;
+            if (a[7] === 'long')   { s.metabolic += 2; s.hormonal += 1; }
+            else if (a[7] === 'medium') { s.metabolic += 1; s.hormonal += 1; }
+            else if (a[7] === 'none')   s.explorer += 2;
+            if (a[8] === 'nothing')     s.explorer += 3;
+            else if (a[8] === 'diets')       s.metabolic += 2;
+            else if (a[8] === 'supplements') { s.explorer += 1; s.metabolic += 1; }
+            else if (a[8] === 'allopathy')   { s.metabolic += 1; s.hormonal += 1; }
+            if (a[9] === 'energy')          s.vitality += 2;
+            else if (a[9] === 'reverse')         s.metabolic += 2;
+            else if (a[9] === 'understand')      s.explorer += 2;
+            else if (a[9] === 'medication-free') { s.metabolic += 1; s.hormonal += 1; }
+            if (a[10] === 'curious') s.explorer += 2;
+            else if (a[10] === 'all-in') Object.keys(s).forEach(k => s[k]++);
+            return Object.entries(s).reduce((x, y) => y[1] > x[1] ? y : x)[0];
+        }
+
+        function showResultSlide(profileKey) {
+            const p = PROFILES[profileKey] || PROFILES.explorer;
+            document.getElementById('result-name').textContent    = p.name;
+            document.getElementById('result-tagline').textContent = p.tagline;
+            document.getElementById('result-desc').textContent    = p.desc;
+            const iconEl = document.getElementById('result-icon-i');
+            if (iconEl) iconEl.className = 'hgi-stroke ' + p.icon;
+            const focusEl = document.getElementById('result-focus');
+            if (focusEl) focusEl.innerHTML = p.focus.map(f =>
+                `<div class="result-focus-item"><i class="hgi-stroke hgi-tick-01"></i>${f}</div>`
+            ).join('');
+            showSurveySlide('result');
+        }
+
         function openSurvey() {
             surveyModal.classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -2853,82 +2997,73 @@
         function closeSurvey() {
             surveyModal.classList.remove('active');
             document.body.style.overflow = '';
-            // Reset survey
             currentSurveyQ = 'intro';
             surveySlides.forEach(s => s.classList.remove('active'));
             document.querySelector('.survey-slide[data-q="intro"]').classList.add('active');
             progressLineFill.style.width = '0%';
             document.querySelectorAll('.survey-opt').forEach(o => o.classList.remove('selected'));
+            Object.keys(surveyAnswers).forEach(k => delete surveyAnswers[k]);
         }
 
         function showSurveySlide(qNum) {
             surveySlides.forEach(s => s.classList.remove('active'));
             const targetSlide = document.querySelector(`.survey-slide[data-q="${qNum}"]`);
             if (targetSlide) targetSlide.classList.add('active');
-
-            // Update progress line
             if (qNum === 'intro') {
                 progressLineFill.style.width = '0%';
-            } else if (qNum === 'email' || qNum === 'success') {
+            } else if (qNum === 'email' || qNum === 'result') {
                 progressLineFill.style.width = '100%';
             } else {
-                const progress = (qNum / totalQuestions) * 100;
-                progressLineFill.style.width = `${progress}%`;
+                progressLineFill.style.width = `${(qNum / totalQuestions) * 100}%`;
             }
         }
 
         surveyTrigger.addEventListener('click', openSurvey);
         surveyClose.addEventListener('click', closeSurvey);
+        surveyStart.addEventListener('click', () => { currentSurveyQ = 1; showSurveySlide(1); });
 
-        // Start button
-        surveyStart.addEventListener('click', () => {
-            currentSurveyQ = 1;
-            showSurveySlide(1);
-        });
-
-        // Handle option selection - auto advance
         document.querySelectorAll('.survey-opt').forEach(opt => {
             opt.addEventListener('click', function() {
                 const slide = this.closest('.survey-slide');
-                const qNum = parseInt(slide.dataset.q);
-
-                // Select option
+                const qNum  = parseInt(slide.dataset.q);
                 slide.querySelectorAll('.survey-opt').forEach(o => o.classList.remove('selected'));
                 this.classList.add('selected');
                 surveyAnswers[qNum] = this.dataset.val;
-
-                // Auto advance after brief delay
                 setTimeout(() => {
-                    if (qNum < 10) {
-                        currentSurveyQ = qNum + 1;
-                        showSurveySlide(currentSurveyQ);
-                    } else {
-                        // Show email slide
-                        showSurveySlide('email');
-                    }
+                    if (qNum < 10) { currentSurveyQ = qNum + 1; showSurveySlide(currentSurveyQ); }
+                    else { showSurveySlide('email'); }
                 }, 400);
             });
         });
 
-        // Email submit
         surveySubmit.addEventListener('click', () => {
-            const email = modalEmail.value;
-            if (email && email.includes('@')) {
-                surveyAnswers.email = email;
-                console.log('Survey submitted:', surveyAnswers);
-                showSurveySlide('success');
-            }
+            const email = modalEmail.value.trim();
+            if (!email || !email.includes('@')) return;
+            surveyAnswers.email = email;
+            const profileKey = computeProfile(surveyAnswers);
+            surveyAnswers.profile = profileKey;
+
+            // Show result immediately
+            showResultSlide(profileKey);
+
+            // Send to PHP in background — reveals "sent to inbox" on success
+            fetch('submit-assessment.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(surveyAnswers)
+            })
+            .then(r => r.json())
+            .then(data => {
+                if (data.success) {
+                    const sentMsg = document.getElementById('result-sent');
+                    if (sentMsg) sentMsg.style.display = 'flex';
+                }
+            })
+            .catch(() => {}); // Silent fail — result card still shows
         });
 
-        // Done button
         surveyDone.addEventListener('click', closeSurvey);
-
-        // Close on background click
-        surveyModal.addEventListener('click', (e) => {
-            if (e.target === surveyModal) {
-                closeSurvey();
-            }
-        });
+        surveyModal.addEventListener('click', (e) => { if (e.target === surveyModal) closeSurvey(); });
     </script>
 </body>
 </html>
