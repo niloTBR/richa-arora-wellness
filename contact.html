@@ -818,5 +818,664 @@
             this.reset();
         });
     </script>
+
+    <!-- Free Assessment Widget -->
+<div class="survey-widget" id="survey-widget">
+        <div class="survey-widget-btn" id="survey-trigger">
+            <i class="hgi-stroke hgi-clipboard"></i>
+            <span>Free Assessment</span>
+        </div>
+    </div>
+
+    <!-- Full Screen Survey Modal -->
+    <div class="survey-modal" id="survey-modal">
+        <div class="survey-modal-content">
+            <!-- Header with close and progress -->
+            <div class="survey-header-bar">
+                <button class="survey-close" id="survey-close">
+                    <i class="hgi-stroke hgi-cancel-01"></i>
+                </button>
+                <div class="progress-line">
+                    <div class="progress-line-fill" id="progress-line-fill"></div>
+                </div>
+            </div>
+
+            <div class="survey-slides-wrapper">
+                <!-- Welcome/Intro Slide -->
+                <div class="survey-slide active" data-q="intro">
+                    <div class="survey-icon intro-icon"><i class="hgi-stroke hgi-flower"></i></div>
+                    <h3 class="survey-question">Let's Understand Your Body</h3>
+                    <p class="survey-subtitle">This 2-minute assessment will help Dr. Richa understand your unique health profile and create a personalized path to wellness.</p>
+                    <p class="survey-encourage">No judgment. Just honest answers that lead to real transformation.</p>
+                    <button class="survey-start-btn" id="survey-start">Begin Assessment <i class="hgi-stroke hgi-arrow-right-01"></i></button>
+                </div>
+
+                <!-- Question 1: Primary Concern -->
+                <div class="survey-slide" data-q="1">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-stethoscope-02"></i></div>
+                    <p class="survey-q-num">1 of 10</p>
+                    <h3 class="survey-question">What's your primary health concern right now?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="hormonal"><i class="hgi-stroke hgi-dna"></i> Hormonal Issues (PCOD, Thyroid, Menopause)</button>
+                        <button class="survey-opt" data-val="metabolic"><i class="hgi-stroke hgi-heartbeat"></i> Metabolic Issues (Diabetes, Weight, Cholesterol)</button>
+                        <button class="survey-opt" data-val="digestive"><i class="hgi-stroke hgi-apple-01"></i> Digestive Problems (IBS, Reflux, Gut Issues)</button>
+                        <button class="survey-opt" data-val="fatigue"><i class="hgi-stroke hgi-battery-low"></i> Chronic Fatigue & Low Energy</button>
+                    </div>
+                </div>
+
+                <!-- Question 2: Morning Routine -->
+                <div class="survey-slide" data-q="2">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-sun-03"></i></div>
+                    <p class="survey-q-num">2 of 10</p>
+                    <h3 class="survey-question">What time do you wake up and how do you feel?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="early-energized"><i class="hgi-stroke hgi-sunrise"></i> Before 6am, feeling refreshed</button>
+                        <button class="survey-opt" data-val="normal-okay"><i class="hgi-stroke hgi-alarm-clock"></i> 6-8am, takes time to feel awake</button>
+                        <button class="survey-opt" data-val="late-groggy"><i class="hgi-stroke hgi-sleeping"></i> After 8am, still feel groggy</button>
+                        <button class="survey-opt" data-val="irregular"><i class="hgi-stroke hgi-shuffle"></i> Irregular schedule, often exhausted</button>
+                    </div>
+                </div>
+
+                <!-- Question 3: Gut Symptoms -->
+                <div class="survey-slide" data-q="3">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-organic-food"></i></div>
+                    <p class="survey-q-num">3 of 10</p>
+                    <h3 class="survey-question">Do you experience any of these gut symptoms regularly?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="bloating"><i class="hgi-stroke hgi-circle"></i> Bloating after meals</button>
+                        <button class="survey-opt" data-val="irregular"><i class="hgi-stroke hgi-alert-02"></i> Irregular bowel movements</button>
+                        <button class="survey-opt" data-val="acidity"><i class="hgi-stroke hgi-fire"></i> Acidity or acid reflux</button>
+                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-01"></i> None of the above</button>
+                    </div>
+                </div>
+
+                <!-- Question 4: Relationship with Food -->
+                <div class="survey-slide" data-q="4">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-dish-01"></i></div>
+                    <p class="survey-q-num">4 of 10</p>
+                    <h3 class="survey-question">How would you describe your relationship with food?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="mindful"><i class="hgi-stroke hgi-meditation"></i> Mindful, home-cooked meals mostly</button>
+                        <button class="survey-opt" data-val="busy"><i class="hgi-stroke hgi-time-02"></i> Eat on-the-go, whatever is convenient</button>
+                        <button class="survey-opt" data-val="emotional"><i class="hgi-stroke hgi-sad-01"></i> Emotional eating, cravings control me</button>
+                        <button class="survey-opt" data-val="restrictive"><i class="hgi-stroke hgi-cancel-01"></i> Restrictive diets, always trying new ones</button>
+                    </div>
+                </div>
+
+                <!-- Question 5: Hormonal Symptoms -->
+                <div class="survey-slide" data-q="5">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-thermometer"></i></div>
+                    <p class="survey-q-num">5 of 10</p>
+                    <h3 class="survey-question">Which hormonal symptoms affect you most?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="cycle"><i class="hgi-stroke hgi-calendar-02"></i> Irregular periods or painful cycles</button>
+                        <button class="survey-opt" data-val="skin-hair"><i class="hgi-stroke hgi-user-star-01"></i> Skin issues, hair fall, or acne</button>
+                        <button class="survey-opt" data-val="mood"><i class="hgi-stroke hgi-mood-minus"></i> Mood swings, anxiety, or brain fog</button>
+                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-double-01"></i> None currently</button>
+                    </div>
+                </div>
+
+                <!-- Question 6: Sleep & Circadian -->
+                <div class="survey-slide" data-q="6">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-moon-02"></i></div>
+                    <p class="survey-q-num">6 of 10</p>
+                    <h3 class="survey-question">How is your sleep and circadian rhythm?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="solid"><i class="hgi-stroke hgi-star"></i> Sleep by 10pm, 7-8 hours uninterrupted</button>
+                        <button class="survey-opt" data-val="late"><i class="hgi-stroke hgi-smartphone-02"></i> Sleep late, scroll before bed</button>
+                        <button class="survey-opt" data-val="disturbed"><i class="hgi-stroke hgi-alert-circle"></i> Wake up multiple times at night</button>
+                        <button class="survey-opt" data-val="insomnia"><i class="hgi-stroke hgi-sad-02"></i> Difficulty falling or staying asleep</button>
+                    </div>
+                </div>
+
+                <!-- Question 7: Medication Duration -->
+                <div class="survey-slide" data-q="7">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-medicine-01"></i></div>
+                    <p class="survey-q-num">7 of 10</p>
+                    <h3 class="survey-question">How long have you been on medications?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="none"><i class="hgi-stroke hgi-tick-01"></i> Not on any medications</button>
+                        <button class="survey-opt" data-val="short"><i class="hgi-stroke hgi-calendar-01"></i> Less than 1 year</button>
+                        <button class="survey-opt" data-val="medium"><i class="hgi-stroke hgi-calendar-03"></i> 1-5 years</button>
+                        <button class="survey-opt" data-val="long"><i class="hgi-stroke hgi-infinity"></i> 5+ years, increasing doses</button>
+                    </div>
+                </div>
+
+                <!-- Question 8: Previous Attempts -->
+                <div class="survey-slide" data-q="8">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-search-02"></i></div>
+                    <p class="survey-q-num">8 of 10</p>
+                    <h3 class="survey-question">What have you tried before that didn't work?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="diets"><i class="hgi-stroke hgi-scale"></i> Crash diets & calorie counting</button>
+                        <button class="survey-opt" data-val="supplements"><i class="hgi-stroke hgi-capsule"></i> Random supplements & detoxes</button>
+                        <button class="survey-opt" data-val="allopathy"><i class="hgi-stroke hgi-hospital-01"></i> Only conventional medicine</button>
+                        <button class="survey-opt" data-val="nothing"><i class="hgi-stroke hgi-help"></i> Haven't really tried anything yet</button>
+                    </div>
+                </div>
+
+                <!-- Question 9: Dream Outcome -->
+                <div class="survey-slide" data-q="9">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-target-02"></i></div>
+                    <p class="survey-q-num">9 of 10</p>
+                    <h3 class="survey-question">What would transformation look like for you?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="medication-free"><i class="hgi-stroke hgi-flower"></i> Living medication-free</button>
+                        <button class="survey-opt" data-val="energy"><i class="hgi-stroke hgi-flash"></i> Boundless energy throughout the day</button>
+                        <button class="survey-opt" data-val="reverse"><i class="hgi-stroke hgi-refresh"></i> Reversing a diagnosed condition</button>
+                        <button class="survey-opt" data-val="understand"><i class="hgi-stroke hgi-book-open-01"></i> Understanding my body deeply</button>
+                    </div>
+                </div>
+
+                <!-- Question 10: Commitment Level -->
+                <div class="survey-slide" data-q="10">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-rocket-01"></i></div>
+                    <p class="survey-q-num">10 of 10</p>
+                    <h3 class="survey-question">How ready are you to make real changes?</h3>
+                    <div class="survey-options">
+                        <button class="survey-opt" data-val="all-in"><i class="hgi-stroke hgi-fire"></i> All in. Ready to transform</button>
+                        <button class="survey-opt" data-val="guided"><i class="hgi-stroke hgi-route"></i> Need guidance but willing to commit</button>
+                        <button class="survey-opt" data-val="slow"><i class="hgi-stroke hgi-stairs-up"></i> Prefer gradual, sustainable changes</button>
+                        <button class="survey-opt" data-val="curious"><i class="hgi-stroke hgi-eye"></i> Just exploring options for now</button>
+                    </div>
+                </div>
+
+                <!-- Email Capture -->
+                <div class="survey-slide" data-q="email">
+                    <div class="survey-icon"><i class="hgi-stroke hgi-mail-01"></i></div>
+                    <h3 class="survey-question">Get Your Free Assessment</h3>
+                    <p class="survey-subtitle">Enter your email to receive personalized health insights based on your responses.</p>
+                    <input type="email" class="survey-email" id="modal-email" placeholder="your@email.com">
+                    <button class="survey-submit" id="survey-submit">Get My Results <i class="hgi-stroke hgi-arrow-right-01"></i></button>
+                    <p class="survey-privacy"><i class="hgi-stroke hgi-lock-01"></i> No spam, ever.</p>
+                </div>
+
+                <!-- Success -->
+                <div class="survey-slide" data-q="success">
+                    <div class="survey-success-icon"><i class="hgi-stroke hgi-tick-01"></i></div>
+                    <h3 class="survey-question">You're All Set!</h3>
+                    <p class="survey-subtitle">Dr. Richa will send your personalized assessment within 24 hours.</p>
+                    <button class="survey-done" id="survey-done">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        /* Floating Survey Widget */
+        .survey-widget {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 999;
+        }
+
+        .survey-widget-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            background: var(--terracotta);
+            color: #fafcfa;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(79, 106, 88, 0.4);
+            transition: all 0.3s ease;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .survey-widget-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(79, 106, 88, 0.5);
+        }
+
+        .survey-widget-btn i {
+            font-size: 1.2rem;
+        }
+
+        /* Survey Modal */
+        .survey-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(45, 45, 45, 0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .survey-modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .survey-modal-content {
+            width: 100%;
+            max-width: 480px;
+            height: 100%;
+            max-height: 100vh;
+            background: var(--cream);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .survey-modal-content {
+                max-height: 90vh;
+                border-radius: 24px;
+                margin: 20px;
+            }
+        }
+
+        /* Survey Header Bar */
+        .survey-header-bar {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 20px;
+            background: var(--cream);
+        }
+
+        .survey-close {
+            width: 36px;
+            height: 36px;
+            background: rgba(0,0,0,0.05);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .survey-close:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .survey-close i {
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        /* Single Line Progress */
+        .progress-line {
+            flex: 1;
+            height: 4px;
+            background: var(--blush);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-line-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--sage), var(--terracotta));
+            border-radius: 4px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Intro Slide Styles */
+        .intro-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--sage), #6b7a63);
+        }
+
+        .intro-icon i {
+            font-size: 36px;
+            color: #fafcfa;
+        }
+
+        .survey-encourage {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--sage);
+            font-style: italic;
+            margin-bottom: 32px;
+        }
+
+        .survey-start-btn {
+            width: 100%;
+            padding: 18px 24px;
+            background: var(--terracotta);
+            color: #fafcfa;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .survey-start-btn:hover {
+            background: var(--sandstone);
+            transform: translateY(-2px);
+        }
+
+        /* Survey Slides */
+        .survey-slides-wrapper {
+            flex: 1;
+            padding: 20px 28px 40px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .survey-slide {
+            display: none;
+            animation: slideIn 0.4s ease;
+        }
+
+        .survey-slide.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .survey-icon {
+            width: 64px;
+            height: 64px;
+            background: #fafcfa;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+
+        .survey-icon i {
+            font-size: 28px;
+            color: var(--terracotta);
+        }
+
+        .survey-q-num {
+            text-align: center;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--sage);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .survey-question {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark);
+            text-align: center;
+            margin-bottom: 28px;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+        .survey-subtitle {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text);
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        /* Survey Options */
+        .survey-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .survey-opt {
+            width: 100%;
+            padding: 16px 20px;
+            background: #fafcfa;
+            border: 2px solid transparent;
+            border-radius: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-size: 0.9rem;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .survey-opt:hover {
+            border-color: var(--peach);
+            transform: translateY(-2px);
+        }
+
+        .survey-opt.selected {
+            border-color: var(--terracotta);
+            background: linear-gradient(135deg, rgba(220, 236, 219, 0.15), rgba(79, 106, 88, 0.1));
+        }
+
+        .survey-opt i {
+            font-size: 1.3rem;
+            color: var(--terracotta);
+            flex-shrink: 0;
+        }
+
+        /* Email Input */
+        .survey-email {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--blush);
+            border-radius: 14px;
+            font-size: 1rem;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .survey-email:focus {
+            outline: none;
+            border-color: var(--terracotta);
+        }
+
+        .survey-submit {
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--terracotta);
+            color: #fafcfa;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .survey-submit:hover {
+            background: var(--sandstone);
+            transform: translateY(-2px);
+        }
+
+        .survey-privacy {
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text);
+            opacity: 0.6;
+            margin-top: 16px;
+        }
+
+        .survey-privacy i {
+            color: var(--sage);
+            margin-right: 4px;
+        }
+
+        /* Success */
+        .survey-success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--sage), #6b7a63);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto 24px;
+            animation: scaleIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .survey-success-icon i {
+            font-size: 36px;
+            color: #fafcfa;
+        }
+
+        .survey-done {
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--sage);
+            color: #fafcfa;
+            border: none;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .survey-done:hover {
+            background: #6b7a63;
+        }
+    </style>
+    <script>
+        // Survey Modal Logic
+        const surveyModal = document.getElementById('survey-modal');
+        const surveyTrigger = document.getElementById('survey-trigger');
+        const surveyClose = document.getElementById('survey-close');
+        const surveySlides = document.querySelectorAll('.survey-slide');
+        const progressLineFill = document.getElementById('progress-line-fill');
+        const modalEmail = document.getElementById('modal-email');
+        const surveySubmit = document.getElementById('survey-submit');
+        const surveyDone = document.getElementById('survey-done');
+        const surveyStart = document.getElementById('survey-start');
+
+        let currentSurveyQ = 'intro';
+        const surveyAnswers = {};
+        const totalQuestions = 10;
+
+        function openSurvey() {
+            surveyModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            showSurveySlide('intro');
+        }
+
+        function closeSurvey() {
+            surveyModal.classList.remove('active');
+            document.body.style.overflow = '';
+            // Reset survey
+            currentSurveyQ = 'intro';
+            surveySlides.forEach(s => s.classList.remove('active'));
+            document.querySelector('.survey-slide[data-q="intro"]').classList.add('active');
+            progressLineFill.style.width = '0%';
+            document.querySelectorAll('.survey-opt').forEach(o => o.classList.remove('selected'));
+        }
+
+        function showSurveySlide(qNum) {
+            surveySlides.forEach(s => s.classList.remove('active'));
+            const targetSlide = document.querySelector(`.survey-slide[data-q="${qNum}"]`);
+            if (targetSlide) targetSlide.classList.add('active');
+
+            // Update progress line
+            if (qNum === 'intro') {
+                progressLineFill.style.width = '0%';
+            } else if (qNum === 'email' || qNum === 'success') {
+                progressLineFill.style.width = '100%';
+            } else {
+                const progress = (qNum / totalQuestions) * 100;
+                progressLineFill.style.width = `${progress}%`;
+            }
+        }
+
+        surveyTrigger.addEventListener('click', openSurvey);
+        surveyClose.addEventListener('click', closeSurvey);
+
+        // Start button
+        surveyStart.addEventListener('click', () => {
+            currentSurveyQ = 1;
+            showSurveySlide(1);
+        });
+
+        // Handle option selection - auto advance
+        document.querySelectorAll('.survey-opt').forEach(opt => {
+            opt.addEventListener('click', function() {
+                const slide = this.closest('.survey-slide');
+                const qNum = parseInt(slide.dataset.q);
+
+                // Select option
+                slide.querySelectorAll('.survey-opt').forEach(o => o.classList.remove('selected'));
+                this.classList.add('selected');
+                surveyAnswers[qNum] = this.dataset.val;
+
+                // Auto advance after brief delay
+                setTimeout(() => {
+                    if (qNum < 10) {
+                        currentSurveyQ = qNum + 1;
+                        showSurveySlide(currentSurveyQ);
+                    } else {
+                        // Show email slide
+                        showSurveySlide('email');
+                    }
+                }, 400);
+            });
+        });
+
+        // Email submit
+        surveySubmit.addEventListener('click', () => {
+            const email = modalEmail.value;
+            if (email && email.includes('@')) {
+                surveyAnswers.email = email;
+                console.log('Survey submitted:', surveyAnswers);
+                showSurveySlide('success');
+            }
+        });
+
+        // Done button
+        surveyDone.addEventListener('click', closeSurvey);
+
+        // Close on background click
+        surveyModal.addEventListener('click', (e) => {
+            if (e.target === surveyModal) {
+                closeSurvey();
+            }
+        });
+    </script>
 </body>
 </html>
