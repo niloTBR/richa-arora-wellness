@@ -327,6 +327,54 @@
             margin-bottom: 16px;
         }
 
+        .pillar-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .pillar-card {
+            background: var(--beige);
+            padding: 48px 36px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+        }
+
+        .pillar-card-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            font-size: 32px;
+            color: var(--terracotta);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .pillar-card p {
+            font-size: 0.85rem;
+            line-height: 1.7;
+        }
+
+        @media (max-width: 768px) {
+            .pillar-cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .pillar-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -864,51 +912,27 @@
                 <h2>The Pillars of My Approach</h2>
             </div>
 
-            <div class="pillar-row">
-                <div class="pillar-content">
+            <div class="pillar-cards-grid">
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">
+                        <i class="hgi-stroke hgi-flower"></i>
+                    </div>
                     <h3>Ayurvedic Wisdom</h3>
-                    <p>Ayurveda, the 5,000-year-old science of life, provides a profound understanding of individual constitution and how to maintain balance. It recognizes that each person is unique, and what heals one may not heal another.</p>
-                    <ul class="pillar-list">
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Prakriti (constitution) assessment for personalized care</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Dosha balancing through diet and lifestyle</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Seasonal routines (Ritucharya) for optimal health</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Herbal medicine tailored to your needs</li>
-                    </ul>
+                    <p>Ayurveda, the 5,000-year-old science of life, provides a profound understanding of individual constitution. Prakriti assessment, dosha balancing, seasonal routines, and targeted herbal protocols form the foundation of this ancient wisdom.</p>
                 </div>
-                <div class="pillar-image">
-                    <img src="Photos/Balance.jpg" alt="Ayurvedic Healing">
-                </div>
-            </div>
-
-            <div class="pillar-row">
-                <div class="pillar-content">
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">
+                        <i class="hgi-stroke hgi-droplet"></i>
+                    </div>
                     <h3>Naturopathy</h3>
-                    <p>Naturopathy digs deeper to find the root cause of disease. Using advanced testing and analysis, we uncover hidden imbalances that conventional medicine often misses.</p>
-                    <ul class="pillar-list">
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Comprehensive lab analysis and interpretation</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Gut microbiome assessment</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Hormonal panel reviews</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Nutritional deficiency identification</li>
-                    </ul>
+                    <p>Naturopathy uncovers the root cause of disease through comprehensive lab analysis, gut microbiome assessment, hormonal panels, and nutritional profiling — identifying the hidden imbalances that conventional medicine often misses.</p>
                 </div>
-                <div class="pillar-image">
-                    <img src="Photos/Focus.jpg" alt="Naturopathy">
-                </div>
-            </div>
-
-            <div class="pillar-row">
-                <div class="pillar-content">
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">
+                        <i class="hgi-stroke hgi-yoga-03"></i>
+                    </div>
                     <h3>Lifestyle Medicine</h3>
-                    <p>True healing requires more than supplements and protocols. It demands a transformation in how we live, eat, move, sleep, and manage stress. This pillar focuses on sustainable lifestyle changes.</p>
-                    <ul class="pillar-list">
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Circadian rhythm optimization</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Stress management and nervous system regulation</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Movement as medicine</li>
-                        <li><i class="hgi-stroke hgi-checkmark-circle-02"></i> Habit formation strategies that stick</li>
-                    </ul>
-                </div>
-                <div class="pillar-image">
-                    <img src="Photos/Move.jpg" alt="Lifestyle Medicine">
+                    <p>True healing requires a transformation in how we live, eat, move, and sleep. Circadian rhythm optimization, stress regulation, intentional movement, and sustainable habit formation make lasting change possible.</p>
                 </div>
             </div>
         </div>
