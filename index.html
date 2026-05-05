@@ -383,9 +383,14 @@
         }
 
         .fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.hidden {
             opacity: 0;
             transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .fade-in.visible {
@@ -2709,23 +2714,27 @@
             }
         });
 
-        // Fade in on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -60px 0px'
-        };
+        // Fade in on scroll (progressive enhancement: visible by default, JS adds animation)
+        document.querySelectorAll('.fade-in').forEach(el => el.classList.add('hidden'));
 
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -60px 0px' };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    entry.target.classList.remove('hidden');
                     entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+        // Fallback: force all visible after 2s in case observer doesn't fire
+        setTimeout(() => {
+            document.querySelectorAll('.fade-in.hidden').forEach(el => {
+                el.classList.remove('hidden');
+                el.classList.add('visible');
+            });
+        }, 2000);
 
         // Testimonials slider - 4 cards, 2.5 visible at a time on desktop
         const track = document.getElementById('testimonials-track');
